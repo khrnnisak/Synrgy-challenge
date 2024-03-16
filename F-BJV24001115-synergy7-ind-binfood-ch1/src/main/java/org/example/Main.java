@@ -3,6 +3,8 @@ package org.example;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -15,7 +17,11 @@ public class Main {
     static ArrayList<String> menuList = new ArrayList<>();
     static ArrayList<Integer> priceList = new ArrayList<>();
     static ArrayList<Integer> qtyList = new ArrayList<>();
-
+    public static final String RESET = "\u001B[0m";
+    public static final String BLACK = "\u001B[30m";
+    public static final String RED = "\u001B[31m";
+    public static final String GREEN = "\u001B[32m";
+    public static final String YELLOW = "\u001B[33m";
     public static void main(String[] args) throws InterruptedException {
         mainMenu();
     }
@@ -39,9 +45,10 @@ public class Main {
                 setQuantity(pilih);
             } else if (pilih == 99) {
                 if (menuList.isEmpty()) {
-                    System.out.println("Anda belum memesan makanan");
+                    System.out.println(RED+"Anda belum memesan makanan"+RESET);
+                }else{
+                    showStruk();
                 }
-                showStruk();
             }
         } while (pilih != 0);
     }
@@ -83,7 +90,7 @@ public class Main {
                 break;
         }
         System.out.println(getHeader("Berapa Pesanan Anda"));
-        System.out.println(namaMenu + "\t | " + harga);
+        System.out.println(namaMenu + "\t | " + formatPrice(harga));
         System.out.println("(input 0 untuk kembali)");
         System.out.print("qty =>");
         inputQty = input.nextInt();
@@ -110,11 +117,11 @@ public class Main {
             subTotal = priceList.get(i) * qtyList.get(i);
             total += subTotal;
             totalQty += qtyList.get(i);
-            listMenu.append(menuList.get(i)).append("\t\t").append(qtyList.get(i)).append("\t\t").append(subTotal)
+            listMenu.append(menuList.get(i)).append("\t\t").append(qtyList.get(i)).append("\t\t").append(formatPrice(subTotal))
                     .append("\n");
         }
         listMenu.append("------------------------------------------------+\n");
-        listMenu.append("Total\t\t\t").append(totalQty).append("\t\t").append(total);
+        listMenu.append("Total\t\t\t").append(totalQty).append("\t\t").append(formatPrice(total));
         System.out.println(listMenu.toString());
         System.out.println("");
         System.out.println("1. Konfirmasi dan Bayar");
@@ -157,12 +164,12 @@ public class Main {
                 fileWriter.write(nota.toString());
                 fileWriter.close();
                 System.out.println("");
-                System.out.println("Nota Berhasil dicetak");
+                System.out.println(GREEN+"Nota Berhasil dicetak"+RESET);
             } else {
-                System.out.println("File already exists");
+                System.out.println(RED+"File already exists"+RESET);
             }
         } catch (IOException e) {
-            System.out.println("Terjadi error");
+            System.out.println(RED+"Terjadi error"+RESET);
             throw new RuntimeException(e);
         }
     }
@@ -216,5 +223,17 @@ public class Main {
                 break;
         }
         return pembayaran;
+    }
+    public static String formatPrice(int harga){
+
+        DecimalFormat kursIndonesia = (DecimalFormat) DecimalFormat.getCurrencyInstance();
+        DecimalFormatSymbols formatRp = new DecimalFormatSymbols();
+
+        formatRp.setCurrencySymbol("Rp. ");
+        formatRp.setMonetaryDecimalSeparator(',');
+        formatRp.setGroupingSeparator('.');
+        kursIndonesia.setDecimalFormatSymbols(formatRp);
+
+        return kursIndonesia.format(harga);
     }
 }
