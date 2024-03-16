@@ -1,3 +1,0 @@
-Nasi Goreng qty : 2 total : 30000
-Mie Goreng qty : 1 total : 13000
-total : 43000
