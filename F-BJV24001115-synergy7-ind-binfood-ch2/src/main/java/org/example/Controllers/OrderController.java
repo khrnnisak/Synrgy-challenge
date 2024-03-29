@@ -3,6 +3,7 @@ package org.example.Controllers;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -16,10 +17,10 @@ import org.example.Services.PaymentServiceImpl;
 import org.example.Utils.AdditionalUtil;
 import org.example.Utils.FormatMessageUtil;
 import org.example.Views.MainView;
+import org.example.Views.OrderView;
 import org.example.Views.PaymentView;
 
 public class OrderController {
-
     public void addOrder(Item item, int quantity) {
         OrderService o_serv = new OrderServiceImpl();
         Random rand = new Random();
@@ -30,14 +31,16 @@ public class OrderController {
 
     }
 
-    public void deleteOrder(Long id) {
+    public void deleteOrder(String order) {
         OrderService o_serv = new OrderServiceImpl();
+        long id = o_serv.getOrderByName(order);
         o_serv.delete(id);
     }
 
-    public void updateOrder(Long id, Order order) {
+    public void updateOrder(String orderMenu, int quantity) {
         OrderService o_serv = new OrderServiceImpl();
-        o_serv.update(id, order);
+        long id = o_serv.getOrderByName(orderMenu);
+        o_serv.update(id, quantity);
     }
 
     public String displayReceipt() {
@@ -50,6 +53,7 @@ public class OrderController {
         PaymentController p_cont = new PaymentController();
         PaymentView p_view = new PaymentView();
         PaymentService p_serv = new PaymentServiceImpl();
+        OrderView o_view = new OrderView();
         Scanner input = new Scanner(System.in);
         switch (choice) {
             case 1:
@@ -60,27 +64,32 @@ public class OrderController {
                 System.exit(0);
                 break;
             case 2:
-                updateOrder(null, null);
+                o_view.updateOrder();
+                mv.displayMainMenu();
                 break;
             case 3:
-                System.out.print("Apa Anda Yakin? (Y/N)");
-                String hapus = input.nextLine();
-                if (hapus.equalsIgnoreCase("y")) {
-                    deleteOrder(null);
-                }
+                o_view.deleteOrder();
+                mv.displayMainMenu();
                 break;
             case 4:
                 mv.displayMainMenu();
                 break;
             case 0:
-                System.exit(0);
+                System.out.print("Apakah anda yakin untuk keluar? (Y/N)");
+                String confirm = input.nextLine();
+                if (confirm.equalsIgnoreCase("y")) {
+                    System.exit(0);
+                }
+                mv.displayMainMenu();
                 break;
             default:
+                System.out.println("Pilihan tidak valid.");
+                mv.displayMainMenu();
                 break;
         }
     }
 
-    public static void printReceipt(Payment payment){
+    public void printReceipt(Payment payment) {
         OrderService o_serv = new OrderServiceImpl();
         String path = AdditionalUtil.pathFormat();
 
@@ -98,6 +107,14 @@ public class OrderController {
             FormatMessageUtil.errorMessageFormat("Terjadi error");
             throw new RuntimeException(e);
         }
+    }
+
+    public static List<Order> getOrderList() {
+        OrderService o_serv = new OrderServiceImpl();
+        List<Order> o_List = o_serv.getOrderList();
+
+        return o_List;
+
     }
 
 }

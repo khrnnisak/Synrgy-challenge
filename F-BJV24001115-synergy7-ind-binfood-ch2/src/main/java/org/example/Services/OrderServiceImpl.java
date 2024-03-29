@@ -11,7 +11,18 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public void create(Order order) {
-        Data.orders.add(order);
+        try {
+            if (Data.orders.contains(order.getItem())) {
+                FormatMessageUtil.duplicateMessage();
+            } else {
+                Data.orders.add(order);
+                FormatMessageUtil.succesToAddMessage();
+            }
+        } catch (Exception e) {
+            FormatMessageUtil.failedToAddMessage();
+            ;
+            System.out.println(e);
+        }
     }
 
     @Override
@@ -76,14 +87,37 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public void delete(Long id) {
-        int index = getOrderList().indexOf(getOrderById(id));
-        getOrderList().remove(index);
+        try {
+            if (getOrderById(id) == null) {
+                FormatMessageUtil.notFoundMessage();
+            } else {
+                int index = getOrderList().indexOf(getOrderById(id));
+                getOrderList().remove(index);
+                FormatMessageUtil.succesToDeleteMessage();
+            }
+        } catch (Exception e) {
+            FormatMessageUtil.failedToDeleteMessage();
+            System.out.println(e);
+        }
     }
 
     @Override
-    public void update(Long id, Order order) {
-        int index = getOrderList().indexOf(getOrderById(id));
-        getOrderList().set(index, order);
+    public void update(Long id, int quantity) {
+
+        try {
+            if (getOrderById(id) == null) {
+                FormatMessageUtil.notFoundMessage();
+            } else {
+                Order order = getOrderById(id);
+                order.setQuantity(quantity);
+                int index = getOrderList().indexOf(getOrderById(id));
+                getOrderList().set(index, order);
+                FormatMessageUtil.succesToEditMessage();
+            }
+        } catch (Exception e) {
+            FormatMessageUtil.failedToEditMessage();
+            System.out.println(e);
+        }
     }
 
     @Override
@@ -98,14 +132,14 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public void getOrderByName(String name) {
-        for(Order order : getOrderList()){
-            Item orderName = order.getItem();
-            if (orderName.getName().equals(name)) {
-                Long id = orderName.getId();
-                getOrderById(id);
+    public long getOrderByName(String name) {
+        for (Order order : getOrderList()) {
+            if (name.equalsIgnoreCase(order.getItem().getName())) {
+                long id = order.getId();
+                return id;
             }
         }
+        return 0;
     }
 
 }

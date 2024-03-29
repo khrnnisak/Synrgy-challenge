@@ -12,12 +12,12 @@ public interface OrderService {
     int getTotalqty();
     String getreceipt(String payment);
     Order getOrderById(Long id);
-    void getOrderByName(String name);
+    long getOrderByName(String name);
 
 
     void create(Order order);
     void delete(Long id);
-    void update(Long id, Order order);
+    void update(Long id, int quantity);
 
 
 }
