@@ -2,8 +2,6 @@ package org.example.Views;
 
 import java.util.List;
 import java.util.Scanner;
-
-import org.example.Controllers.PaymentController;
 import org.example.Models.Payment;
 import org.example.Utils.*;
 
@@ -13,9 +11,6 @@ public class PaymentView {
     public static void displayPaymentMenu(List<Payment> payments) {
         displayHeader();
         payments.forEach(payment -> displayPayment(payment));
-        // for (int i = 0; i < payment.size(); i++) {
-        //     displayPayment(payment.get(i));
-        // }
     }
 
     public static void displayHeader() {
