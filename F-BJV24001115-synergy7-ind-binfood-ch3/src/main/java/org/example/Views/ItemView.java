@@ -9,9 +9,6 @@ public class ItemView {
     public static void displayItemList(List<Item> items){
         displayHeader();
         items.forEach(item -> displayItem(item));
-        // for (int i = 0; i < item.size(); i++) {
-        //     displayItem(item.get(i));
-        // }
 
     }
     public static void displayItem(Item item){
