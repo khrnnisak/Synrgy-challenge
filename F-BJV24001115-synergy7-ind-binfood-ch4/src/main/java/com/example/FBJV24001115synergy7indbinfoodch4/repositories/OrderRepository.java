@@ -10,6 +10,6 @@ import com.example.FBJV24001115synergy7indbinfoodch4.models.User;
 
 @Repository
 public interface OrderRepository extends JpaRepository<Order, UUID>{
-    Order findByUserAndDestination(User user, String destination);
+    Order findByUserAndDestination(User user, String destination_address);
 
 }

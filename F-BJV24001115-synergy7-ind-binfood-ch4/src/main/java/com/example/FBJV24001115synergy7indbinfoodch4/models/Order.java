@@ -23,7 +23,7 @@ public class Order extends BaseModel{
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private LocalDate order_time;
-    private String destination_address;
+    private String destination;
     private Boolean isCompleted;
 
     @ManyToOne(targetEntity = User.class)

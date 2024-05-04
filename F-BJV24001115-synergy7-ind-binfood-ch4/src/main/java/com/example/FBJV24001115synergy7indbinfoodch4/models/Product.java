@@ -23,7 +23,7 @@ public class Product extends BaseModel{
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    private String product_name;
+    private String name;
     private Double price;
 
     @Enumerated(EnumType.STRING)

@@ -3,19 +3,20 @@
 import java.util.List;
 import java.util.UUID;
 
-import com.example.FBJV24001115synergy7indbinfoodch4.models.Order;
+
+import com.example.FBJV24001115synergy7indbinfoodch4.models.OrderDetail;
 
 public interface OrderDetailService {
-    List<Order> getOrderDetail();
+    List<OrderDetail> getOrderDetail();
 
     String getListToString();
-    int getTotalPrice();
+    double getTotalPrice();
     int getTotalqty();
     String getreceipt(String payment);
     UUID getOrderDetailId(String name);
 
 
-    void create(Order order);
+    void create(OrderDetail orderDetail);
     void delete(UUID id);
     void update(UUID id, int quantity);
 

@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.FBJV24001115synergy7indbinfoodch4.models.Merchant;
+import com.example.FBJV24001115synergy7indbinfoodch4.models.OrderDetail;
 import com.example.FBJV24001115synergy7indbinfoodch4.repositories.MerchantRepository;
+import com.example.FBJV24001115synergy7indbinfoodch4.utils.FormatMessageUtil;
 
 @Service
 public class MerchantServiceImpl implements MerchatService{
@@ -17,35 +19,51 @@ public class MerchantServiceImpl implements MerchatService{
 
     @Override
     public void createMerchant(Merchant merchant) {
-        Optional<Merchant> existMerchant = Optional.ofNullable(merchantRepository.findByName(merchant.getMerchant_name()));
-        if (existMerchant.isPresent()) {
-            System.out.println("Merchant Sudah Tersedia");
-        }else{
-            merchantRepository.save(merchant);
-        }
+        try {
+            Optional<Merchant> existMerchant = Optional.ofNullable(merchantRepository.findByName(merchant.getName()));
+            if (existMerchant.isPresent()) {
+                System.out.println(FormatMessageUtil.duplicateMessage());
+            }else{
+                merchantRepository.save(merchant);
+                System.out.println(FormatMessageUtil.succesToAddMessage());
+            }
+        } catch (Exception e) {
+            System.out.println(FormatMessageUtil.failedToAddMessage() + e);
+        }        
     }
 
     @Override
     public void updateMerchant(UUID id, String location) {
-        Optional<Merchant> existMerchant = merchantRepository.findById(id);
-        if (!existMerchant.isPresent()) {
-            throw new RuntimeException();
-        }else{
-            Merchant choosenMerchant = existMerchant.get();
-            choosenMerchant.setMerchant_location(location);
-            merchantRepository.save(choosenMerchant);
-        }
+        try {
+            Optional<Merchant> existMerchant = merchantRepository.findById(id);
+            if (!existMerchant.isPresent()) {
+                System.out.println(FormatMessageUtil.notFoundMessage());
+            }else{
+                Merchant choosenMerchant = existMerchant.get();
+                choosenMerchant.setMerchant_location(location);
+                merchantRepository.save(choosenMerchant);
+                System.out.println(FormatMessageUtil.succesToEditMessage());
+            }
+        } catch (Exception e) {
+            System.out.println(FormatMessageUtil.failedToAddMessage() + e);
+        }   
     }
 
     @Override
     public void deleteMerchant(UUID id) {
-        Optional<Merchant> existMerchant = merchantRepository.findById(id);
-        if (!existMerchant.isPresent()) {
-            throw new RuntimeException();
-        }else{
-            Merchant choosenMerchant = existMerchant.get();
-            merchantRepository.delete(choosenMerchant);
-        }
+        try {
+            Optional<Merchant> existMerchant = merchantRepository.findById(id);
+            if (!existMerchant.isPresent()) {
+                System.out.println(FormatMessageUtil.notFoundMessage());
+            }else{
+                Merchant choosenMerchant = existMerchant.get();
+                merchantRepository.delete(choosenMerchant);
+                System.out.println(FormatMessageUtil.succesToDeleteMessage());
+            }
+        } catch (Exception e) {
+            System.out.println(FormatMessageUtil.failedToAddMessage() + e);
+        }  
+       
     }
 
     @Override
@@ -65,30 +83,41 @@ public class MerchantServiceImpl implements MerchatService{
 
     @Override
     public UUID getMerchantID(String merchant_name) {
-        Optional<Merchant> existMerchant = Optional.ofNullable(merchantRepository.findByName(merchant_name));
-        if (!existMerchant.isPresent()) {
-            throw new RuntimeException();
-        }else{
-            Merchant merchant = existMerchant.get();
-            return merchant.getId();
+        try {
+            Optional<Merchant> existMerchant = Optional.ofNullable(merchantRepository.findByName(merchant_name));
+            if (!existMerchant.isPresent()) {
+                System.out.println(FormatMessageUtil.notFoundMessage());
+            }else{
+                Merchant merchant = existMerchant.get();
+                return merchant.getId();
+            }
+        } catch (Exception e) {
+            System.out.println(FormatMessageUtil.failedToAddMessage() + e);
         }
+        return null;  
     }
 
     @Override
     public void switchMerchant(String merchant_name) {
-        Optional<Merchant> existMerchant = Optional.ofNullable(merchantRepository.findByName(merchant_name));
-        if (!existMerchant.isPresent()) {
-            throw new RuntimeException();
-        }else{
-
-            Merchant merchant = existMerchant.get();
-            if (Boolean.TRUE.equals(merchant.getIsOpened())) {
-                merchant.setIsOpened(false);
+        try {
+            Optional<Merchant> existMerchant = Optional.ofNullable(merchantRepository.findByName(merchant_name));
+            if (!existMerchant.isPresent()) {
+                System.out.println(FormatMessageUtil.notFoundMessage());
             }else{
-                merchant.setIsOpened(true);
+
+                Merchant merchant = existMerchant.get();
+                if (Boolean.TRUE.equals(merchant.getIsOpened())) {
+                    merchant.setIsOpened(false);
+                }else{
+                    merchant.setIsOpened(true);
+                }
+                merchantRepository.save(merchant);
+                System.out.println(FormatMessageUtil.succesToEditMessage());
             }
-            merchantRepository.save(merchant);
+        } catch (Exception e) {
+            System.out.println(FormatMessageUtil.failedToAddMessage() + e);
         }
+        
     }
 
     

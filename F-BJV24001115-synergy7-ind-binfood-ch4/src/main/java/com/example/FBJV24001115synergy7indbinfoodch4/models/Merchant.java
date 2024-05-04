@@ -22,7 +22,7 @@ public class Merchant extends BaseModel{
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    private String merchant_name;
+    private String name;
     private String merchant_location;
     private Boolean isOpened;
 

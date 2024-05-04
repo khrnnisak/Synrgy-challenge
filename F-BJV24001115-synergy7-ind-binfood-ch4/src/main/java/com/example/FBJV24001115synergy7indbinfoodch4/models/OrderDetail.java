@@ -32,7 +32,7 @@ public class OrderDetail extends BaseModel{
     }
 
     @ManyToOne(targetEntity = Order.class)
-    @JoinColumn(name = "order_id")
+    @JoinColumn(name = "orderId")
     private Order order;
 
     @ManyToOne(targetEntity = Product.class)
