@@ -15,5 +15,6 @@ public interface MerchatService {
     List<Merchant> getClosedMerchant();
     UUID getMerchantID(String merchant_name);
     void switchMerchant(String merchant_name);
+    Merchant getMerchantById(UUID id);
 
 }

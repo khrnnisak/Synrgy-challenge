@@ -31,7 +31,14 @@ public class UserView {
     }
 
     public void createView(){
-
+        System.out.println("Tambah User");
+        System.out.print("Masukkan Email : ");
+        String email = input.next();
+        System.out.print("Masukkan Username : ");
+        String username = input.next();
+        System.out.print("Masukkan Password : ");
+        String password = input.next();
+        userController.createUser(email, username, password);
     }
 
     public void updateView(){

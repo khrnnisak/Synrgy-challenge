@@ -29,16 +29,18 @@ public class UserController {
 
     public void updateUser(String username, String oldPassword, String newPassword){
         userService.updateUser(username, oldPassword, newPassword);
-        showAllUser();
     }
 
     public void deleteUser(String username){
         userService.deleteUser(username);
-        showAllUser();
     }
 
     public UUID getUserId(String username){
         return userService.getUserId(username);
+    }
+
+    public User getUserById(UUID id){
+        return userService.getById(id);
     }
 
     public void userMenuSelection(int choice){

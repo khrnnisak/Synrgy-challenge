@@ -120,5 +120,11 @@ public class MerchantServiceImpl implements MerchatService{
         
     }
 
+    @Override
+    public Merchant getMerchantById(UUID id) {
+        Optional<Merchant> merchant = merchantRepository.findById(id);
+        return merchant.get();
+    }
+
     
 }

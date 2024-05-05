@@ -37,18 +37,12 @@ public class MerchantController {
         merchantService.createMerchant(merchant);
     }
 
-    public void updateMerchant(String merchantName, String location){
-        showAllMerchant();
-        UUID merchant_id = merchantService.getMerchantID(merchantName);
-        merchantService.updateMerchant(merchant_id, location);
-        showAllMerchant();
+    public void updateMerchant(UUID id, String location){
+        merchantService.updateMerchant(id, location);
     }
 
-    public void deleteMerchant(String merchantName){
-        showAllMerchant();
-        UUID merchant_id = merchantService.getMerchantID(merchantName);
+    public void deleteMerchant(UUID merchant_id){
         merchantService.deleteMerchant(merchant_id);
-        showAllMerchant();
     }
     public void showOpenedMerchant(){
         List<Merchant> openedMerchants = merchantService.getOpenedMerchant();
@@ -94,6 +88,10 @@ public class MerchantController {
                 mainView.displayView();
                 break;
         }
+    }
+
+    public Merchant getMerchantById(UUID id){
+        return merchantService.getMerchantById(id);
     }
 
 }

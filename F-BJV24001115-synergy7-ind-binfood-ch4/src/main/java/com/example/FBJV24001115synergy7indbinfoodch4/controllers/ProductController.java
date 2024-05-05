@@ -29,18 +29,12 @@ public class ProductController {
         productService.createdProduct(product);
     }
 
-    public void updateProduct(String product_name, Double price){
-        showAllProducts();
-        UUID product_id = productService.getIdProduct(product_name);
-        productService.updateProduct(product_id, price);
-        showAllProducts();
+    public void updateProduct(UUID id, Double price){;
+        productService.updateProduct(id, price);
     }
 
-    public void deleteProduct(String product_name){
-        showAllProducts();
-        UUID product_id = productService.getIdProduct(product_name);
-        productService.deleteProduct(product_id);
-        showAllProducts();
+    public void deleteProduct(UUID id){
+        productService.deleteProduct(id);
     }
 
     public UUID getProductId(String productName){
@@ -69,6 +63,14 @@ public class ProductController {
                 mainView.displayView();
                 break;
         }
+    }
+
+    public int getCountProduct(){
+        return productService.countProduct();
+    }
+
+    public Product geProductById(UUID id){
+        return productService.getProductById(id);
     }
 
 

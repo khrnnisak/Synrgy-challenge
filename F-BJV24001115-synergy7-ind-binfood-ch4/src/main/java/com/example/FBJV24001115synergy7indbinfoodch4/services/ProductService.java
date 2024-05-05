@@ -11,5 +11,6 @@ public interface ProductService {
     void deleteProduct(UUID id);
     List<Product> getAllProduct();
     UUID getIdProduct(String product_name);
-
+    int countProduct();
+    Product getProductById( UUID id);
 }

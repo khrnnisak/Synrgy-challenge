@@ -89,6 +89,17 @@ public class ProductServiceImpl implements ProductService{
         return null;
     }
 
+    @Override
+    public int countProduct() {
+        return (int) productRepository.count();
+    }
+
+    @Override
+    public Product getProductById(UUID id) {
+        Optional<Product> product = productRepository.findById(id);
+        return product.get();
+    }
+
     
 
 }

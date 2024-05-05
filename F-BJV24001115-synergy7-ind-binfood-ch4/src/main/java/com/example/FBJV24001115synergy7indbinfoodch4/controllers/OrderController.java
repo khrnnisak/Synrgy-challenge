@@ -24,8 +24,11 @@ public class OrderController {
         return orderService.getAllOrder();
     }
 
-    public void createdOrder(Order order){
+    public Order createdOrder(Order order){
         orderService.createOrder(order);
+        UUID order_id = orderService.getOrderId(order.getUser(), order.getDestination());
+        Order thisOrder = orderService.getById(order_id);
+        return thisOrder;
     }
 
     public void updateOrder(UUID id, String destination){
@@ -44,6 +47,9 @@ public class OrderController {
     public UUID getOrderId(User user, String destination){
         return orderService.getOrderId(user, destination);
         
+    }
+    public Order getOrderById(UUID id){
+        return orderService.getById(id);
     }
 
     public void orderMenuSelection(int choice){

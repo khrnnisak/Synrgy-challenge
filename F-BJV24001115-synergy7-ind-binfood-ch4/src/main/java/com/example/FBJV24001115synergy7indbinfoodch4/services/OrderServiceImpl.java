@@ -8,7 +8,6 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.FBJV24001115synergy7indbinfoodch4.models.Merchant;
 import com.example.FBJV24001115synergy7indbinfoodch4.models.Order;
 import com.example.FBJV24001115synergy7indbinfoodch4.models.User;
 import com.example.FBJV24001115synergy7indbinfoodch4.repositories.OrderRepository;
@@ -24,7 +23,13 @@ public class OrderServiceImpl implements OrderService{
     public void createOrder(Order order) {
         try {
             Optional<Order> optionalOrder = Optional.ofNullable(order);
-            if (optionalOrder.isPresent()) {
+            if (!optionalOrder.isPresent()) {
+                System.out.println(FormatMessageUtil.errorMessageFormat("Must be not null"));
+            }
+            Order getOrder = optionalOrder.get();
+            Order findOrder = orderRepository.findByUserAndDestination(getOrder.getUser(), getOrder.getDestination());
+
+            if (findOrder != null) {
                 System.out.println(FormatMessageUtil.duplicateMessage());
             }else{
                 orderRepository.save(order);
@@ -49,7 +54,7 @@ public class OrderServiceImpl implements OrderService{
                 System.out.println(FormatMessageUtil.succesToEditMessage());
             }
         } catch (Exception e) {
-            System.out.println(FormatMessageUtil.failedToAddMessage() + e);
+            System.out.println(FormatMessageUtil.failedToEditMessage() + e);
         } 
     }
 
@@ -65,7 +70,7 @@ public class OrderServiceImpl implements OrderService{
                 System.out.println(FormatMessageUtil.succesToDeleteMessage());
             }
         } catch (Exception e) {
-            System.out.println(FormatMessageUtil.failedToAddMessage() + e);
+            System.out.println(FormatMessageUtil.failedToDeleteMessage() + e);
         }
 
     }
@@ -84,6 +89,12 @@ public class OrderServiceImpl implements OrderService{
             System.out.println(FormatMessageUtil.failedToAddMessage() + e);
         }
         return null;
+    }
+
+    @Override
+    public Order getById(UUID id) {
+        Optional<Order> order = orderRepository.findById(id);
+        return order.get();
     }
 
     @Override

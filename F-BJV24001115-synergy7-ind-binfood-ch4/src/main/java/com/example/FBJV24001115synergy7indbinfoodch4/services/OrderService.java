@@ -12,5 +12,6 @@ public interface OrderService {
     void deleteOrder(UUID id);
     UUID getOrderId(User user, String destination);
     List<Order> getAllOrder();
+    Order getById(UUID id);
 
 }

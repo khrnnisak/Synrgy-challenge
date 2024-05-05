@@ -42,20 +42,27 @@ public class OrderDetailServiceImpl implements OrderDetailService{
         receipt.append("Total\t\t\t")
                 .append(getTotalqty())
                 .append("\t\t")
-                .append(AdditionalUtil.priceFormat((int) getTotalPrice()));
+                .append(AdditionalUtil.priceFormat((int) getTotal()));
         return receipt.toString();
     }
 
 
     @Override
-    public double getTotalPrice() {
-        return getOrderDetail().stream()
-        .mapToInt(orderDetail -> {
-            Product product = orderDetail.getProduct();
-            double quantity = orderDetail.getQuantity();
-            return (int) (product.getPrice() * quantity);
-        })
-        .sum();
+    public double getTotalPrice(Product product, int quantity) {
+        return product.getPrice() * quantity;
+        
+        // getOrderDetail().stream()
+        // .mapToInt(orderDetail -> {
+        //     Product product = orderDetail.getProduct();
+        //     double quantity = orderDetail.getQuantity();
+        //     return (int) (product.getPrice() * quantity);
+        // })
+        // .sum();
+    }
+    @Override
+    public double getTotal() {
+        // TODO Auto-generated method stub
+        return 0;
     }
 
     @Override
@@ -91,8 +98,7 @@ public class OrderDetailServiceImpl implements OrderDetailService{
             if (!opt_order.isPresent()) {
                 System.out.println(FormatMessageUtil.errorMessageFormat("Kesalahan saat menambahkan Pesanan"));
             }
-            OrderDetail choosenOrderDetail = orderDetailRepository.findByOrderId(orderDetail.getOrder().getId());
-            Optional<OrderDetail> getOrder = orderDetailRepository.findById(choosenOrderDetail.getId());
+            Optional<OrderDetail> getOrder = Optional.ofNullable(orderDetailRepository.findByOrderAndProduct(orderDetail.getOrder(), orderDetail.getProduct()));
             if (getOrder.isPresent()) {
                 System.out.println(FormatMessageUtil.errorMessageFormat("Pesanan Sudah tersedia, ubah untuk memperbarui pesanan"));
             } else {
