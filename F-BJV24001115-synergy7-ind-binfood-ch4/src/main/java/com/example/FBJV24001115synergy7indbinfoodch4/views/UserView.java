@@ -42,14 +42,33 @@ public class UserView {
     }
 
     public void updateView(){
+        displayUsers();
+        System.out.print("User yang ingin diperbarui password : ");
+        String username = input.next();
+        System.out.print("Masukkan Password lama : ");
+        String oldPassword = input.next();
+        System.out.print("Masukkan Password baru : ");
+        String newPassword = input.next();
+        System.out.print("Apakah anda yakin? (Y/N) ");
+        String confirm = input.nextLine();
+        if (confirm.equalsIgnoreCase("y")) {
+            userController.updateUser(username, oldPassword, newPassword);
+
+        }
         
     }
 
     public void deleteView(){
+        displayUsers();
+        System.out.print("User yang ingin diperbarui password : ");
+        String username = input.next();
+        userController.deleteUser(username);
         
     }
 
     public void displayUsers(){
         
     }
+
+    
 }

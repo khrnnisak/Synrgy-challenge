@@ -26,14 +26,6 @@ public class OrderDetail extends BaseModel{
     private Integer quantity;
     private Double total_price;
 
-    @Enumerated(EnumType.STRING)
-    private PaymentOrder payment;
-    public enum PaymentOrder{
-        BINARCASH,
-        BINARPAY,
-        BINARPAYLATER
-    }
-
     @ManyToOne(targetEntity = Order.class)
     @JoinColumn(name = "orderId")
     private Order order;

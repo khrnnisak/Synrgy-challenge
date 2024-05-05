@@ -13,10 +13,10 @@ import com.example.FBJV24001115synergy7indbinfoodch4.models.Merchant;
 public interface MerchantRepository extends JpaRepository<Merchant, UUID>{
     Merchant findByName(String name);
 
-    @Query(value = "select * from merchant where isOpened = true", nativeQuery = true)
+    @Query(value = "select * from merchant where is_opened = true and deleted_date is null", nativeQuery = true)
     List<Merchant> findOpenedMerchant();
 
-    @Query(value = "select * from merchant where isOpened = false", nativeQuery = true)
+    @Query(value = "select * from merchant where is_opened = false and deleted_date is null", nativeQuery = true)
     List<Merchant> findClosedMerchant();
 
 }

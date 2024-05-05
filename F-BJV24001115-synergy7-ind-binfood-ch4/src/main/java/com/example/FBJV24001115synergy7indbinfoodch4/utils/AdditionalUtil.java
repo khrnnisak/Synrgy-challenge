@@ -25,7 +25,7 @@ public class AdditionalUtil {
     }
 
     public static String pathFormat(){
-        String PATH = "E:/Kumpulankoding/java/Synrgy-challenge/F-BJV24001115-synergy7-ind-binfood-ch2/";
+        String PATH = "E:/Kumpulankoding/java/Synrgy-challenge/F-BJV24001115-synergy7-ind-binfood-ch4/";
         String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmopqrstu1234567890";
         StringBuilder sb = new StringBuilder();
         Random random = new Random();

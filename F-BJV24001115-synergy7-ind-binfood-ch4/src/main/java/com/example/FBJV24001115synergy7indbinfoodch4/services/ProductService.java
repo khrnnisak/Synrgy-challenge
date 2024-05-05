@@ -3,6 +3,7 @@ package com.example.FBJV24001115synergy7indbinfoodch4.services;
 import java.util.List;
 import java.util.UUID;
 
+import com.example.FBJV24001115synergy7indbinfoodch4.models.Merchant;
 import com.example.FBJV24001115synergy7indbinfoodch4.models.Product;
 
 public interface ProductService {
@@ -13,4 +14,6 @@ public interface ProductService {
     UUID getIdProduct(String product_name);
     int countProduct();
     Product getProductById( UUID id);
+    List<Product> getByMerchant(Merchant merchant);
+
 }

@@ -6,35 +6,61 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import com.example.FBJV24001115synergy7indbinfoodch4.models.Merchant;
 import com.example.FBJV24001115synergy7indbinfoodch4.models.Product;
+import com.example.FBJV24001115synergy7indbinfoodch4.models.Product.CategoryProduct;
 import com.example.FBJV24001115synergy7indbinfoodch4.services.ProductService;
+import com.example.FBJV24001115synergy7indbinfoodch4.utils.FormatMessageUtil;
 import com.example.FBJV24001115synergy7indbinfoodch4.views.MainView;
 import com.example.FBJV24001115synergy7indbinfoodch4.views.ProductView;
 
+import lombok.extern.slf4j.Slf4j;
+
 
 @Controller
+@Slf4j
 
 public class ProductController {
 
     @Autowired ProductService productService;
     @Autowired ProductView productView;
     @Autowired MainView mainView;
+    @Autowired MerchantController merchantController;
 
     public List<Product> showAllProducts(){
         return productService.getAllProduct();
-        // products.forEach(product -> System.out.println(product.getName() + "||" + product.getPrice()));
     }
 
-    public void createProduct(Product product){
+    public void createProduct(String nama, int harga, CategoryProduct kategori, String merchant){
+        UUID id = merchantController.getMerchantId(merchant.toLowerCase());
+        Merchant choosenMerchant = merchantController.getMerchantById(id);
+
+        Product product = Product.builder()
+                .name(nama)
+                .price((double) harga)
+                .category(kategori)
+                .merchant(choosenMerchant)
+                .build();
+        
         productService.createdProduct(product);
+        productView.displayMainMenu();
+
     }
 
-    public void updateProduct(UUID id, Double price){;
-        productService.updateProduct(id, price);
+    public void updateProduct(String nama, int harga){
+        
+        UUID id = getProductId(nama);
+        productService.updateProduct(id, (double) harga);
+        productView.displayMainMenu();
+
     }
 
-    public void deleteProduct(UUID id){
+    public void deleteProduct(String nama){
+        
+        UUID id = getProductId(nama);
         productService.deleteProduct(id);
+        productView.displayMainMenu();
+
     }
 
     public UUID getProductId(String productName){
@@ -59,7 +85,7 @@ public class ProductController {
                 mainView.displayView();
                 break;
             default:
-                System.out.println("Pilihan tidak valid.");
+                log.error("Pilihan tidak valid.");
                 mainView.displayView();
                 break;
         }
@@ -73,5 +99,11 @@ public class ProductController {
         return productService.getProductById(id);
     }
 
+    public List<Product> getProductByMerchant(String merchant){
+        UUID merchant_id = merchantController.getMerchantId(merchant);
+        Merchant choosenMerchant = merchantController.getMerchantById(merchant_id);
+        List<Product> products = productService.getByMerchant(choosenMerchant);
+        return products;
+    }
 
 }

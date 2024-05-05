@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 
 import com.example.FBJV24001115synergy7indbinfoodch4.controllers.MerchantController;
 import com.example.FBJV24001115synergy7indbinfoodch4.controllers.ProductController;
-import com.example.FBJV24001115synergy7indbinfoodch4.models.Merchant;
 import com.example.FBJV24001115synergy7indbinfoodch4.models.Product;
 import com.example.FBJV24001115synergy7indbinfoodch4.models.Product.CategoryProduct;
 import com.example.FBJV24001115synergy7indbinfoodch4.utils.AdditionalUtil;
@@ -18,6 +17,7 @@ import com.example.FBJV24001115synergy7indbinfoodch4.utils.AdditionalUtil;
 public class ProductView {
     @Autowired ProductController productController;
     @Autowired MerchantController merchantController;
+    @Autowired MerchantView merchantView;
 
     Scanner input = new Scanner(System.in);
     public void displayMainMenu(){
@@ -49,19 +49,7 @@ public class ProductView {
         CategoryProduct kategori = CategoryProduct.valueOf(input.next().toUpperCase());
         System.out.print("Pilih Merchant : ");
         String merchant = input.next();
-
-        UUID id = merchantController.getMerchantId(merchant.toLowerCase());
-        Merchant choosenMerchant = merchantController.getMerchantById(id);
-
-        Product product = Product.builder()
-                .name(nama)
-                .price((double) harga)
-                .category(kategori)
-                .merchant(choosenMerchant)
-                .build();
-        
-        productController.createProduct(product);
-        displayMainMenu();
+        productController.createProduct(nama, harga, kategori, merchant);
     }
 
     public void updateView(){
@@ -71,35 +59,45 @@ public class ProductView {
         String nama = input.nextLine();
         System.out.print("Masukkan harga terbaru");
         int harga = input.nextInt();
-        
-        UUID id = productController.getProductId(nama);
-        productController.updateProduct(id, (double) harga);
-        displayMainMenu();
-    }
+        productController.updateProduct(nama, harga);
+    }   
 
     public void deleteView(){
         System.out.println("=====================");
         System.out.print("Masukkan nama produk : ");
         input.nextLine();
         String nama = input.nextLine();
-        UUID id = productController.getProductId(nama);
-        productController.deleteProduct(id);
-        displayMainMenu();
+        
+        System.out.print("Apakah anda yakin? (Y/N) ");
+        String confirm = input.nextLine();
+        if (confirm.equalsIgnoreCase("y")) {
+            productController.deleteProduct(nama);
+        }
+    
     }
 
     public void displayProducts(){
         List<Product> products = productController.showAllProducts();
+        formatDisplayProduct(products);
+    }
+
+    public void formatDisplayProduct(List<Product> products){
         for (int i = 0; i < products.size(); i++) {
             System.out.println(i+1 + ". " + products.get(i).getName() 
                 + " | " + products.get(i).getPrice() + " | "
                 + " | " + products.get(i).getCategory() + " | "
                 );
         }
-        
     }
 
     public void displayProductMerchant(){
-        
+        merchantView.displayAllMerchant();
+        System.out.print("Masukkan Merchant : ");
+        String merchant = input.next();
+
+        List<Product> products = productController.getProductByMerchant(merchant);
+        formatDisplayProduct(products);
+        displayMainMenu();
     }
 
 }

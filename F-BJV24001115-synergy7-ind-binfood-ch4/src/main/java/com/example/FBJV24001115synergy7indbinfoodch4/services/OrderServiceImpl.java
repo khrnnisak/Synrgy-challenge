@@ -13,7 +13,11 @@ import com.example.FBJV24001115synergy7indbinfoodch4.models.User;
 import com.example.FBJV24001115synergy7indbinfoodch4.repositories.OrderRepository;
 import com.example.FBJV24001115synergy7indbinfoodch4.utils.FormatMessageUtil;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Service
+@Slf4j
+
 public class OrderServiceImpl implements OrderService{
 
     @Autowired
@@ -30,13 +34,13 @@ public class OrderServiceImpl implements OrderService{
             Order findOrder = orderRepository.findByUserAndDestination(getOrder.getUser(), getOrder.getDestination());
 
             if (findOrder != null) {
-                System.out.println(FormatMessageUtil.duplicateMessage());
+                log.error(FormatMessageUtil.duplicateMessage());
             }else{
                 orderRepository.save(order);
-                System.out.println(FormatMessageUtil.succesToAddMessage());
+                log.info(FormatMessageUtil.succesToAddMessage());
             }
         } catch (Exception e) {
-            System.out.println(FormatMessageUtil.failedToAddMessage() + e);
+            System.out.println(FormatMessageUtil.failedToAddMessage());
         } 
         
     }
@@ -54,7 +58,7 @@ public class OrderServiceImpl implements OrderService{
                 System.out.println(FormatMessageUtil.succesToEditMessage());
             }
         } catch (Exception e) {
-            System.out.println(FormatMessageUtil.failedToEditMessage() + e);
+            System.out.println(FormatMessageUtil.failedToEditMessage());
         } 
     }
 
@@ -70,7 +74,7 @@ public class OrderServiceImpl implements OrderService{
                 System.out.println(FormatMessageUtil.succesToDeleteMessage());
             }
         } catch (Exception e) {
-            System.out.println(FormatMessageUtil.failedToDeleteMessage() + e);
+            System.out.println(FormatMessageUtil.failedToDeleteMessage());
         }
 
     }
@@ -78,6 +82,12 @@ public class OrderServiceImpl implements OrderService{
     @Override
     public UUID getOrderId(User user, String destination_address) {
         try { 
+            Optional<User> userOptional = Optional.ofNullable(user);
+            Optional<String> desOptional = Optional.ofNullable(destination_address);
+
+            if (!userOptional.isPresent() || !desOptional.isPresent()) {
+                System.out.println(FormatMessageUtil.errorMessageFormat("Masukan tidak boleh kosong"));
+            }
             Optional <Order> existOrder = Optional.ofNullable(orderRepository.findByUserAndDestination(user, destination_address));
             if (!existOrder.isPresent()) {
                 System.out.println(FormatMessageUtil.notFoundMessage());
@@ -86,13 +96,18 @@ public class OrderServiceImpl implements OrderService{
                 return choosenOrder.getId();
             }
         } catch (Exception e) {
-            System.out.println(FormatMessageUtil.failedToAddMessage() + e);
+            System.out.println(FormatMessageUtil.failedToAddMessage());
         }
         return null;
     }
 
     @Override
     public Order getById(UUID id) {
+        Optional<UUID> optional = Optional.ofNullable(id);
+        if (!optional.isPresent()) {
+            System.out.println(FormatMessageUtil.errorMessageFormat("Masukan tidak boleh kosong"));
+            
+        }
         Optional<Order> order = orderRepository.findById(id);
         return order.get();
     }

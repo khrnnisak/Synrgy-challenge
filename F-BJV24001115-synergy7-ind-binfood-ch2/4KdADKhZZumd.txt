@@ -1,0 +1,17 @@
+
+====================
+BinarFud
+====================
+
+Terima kasih sudah memesan di BinarFud
+
+Di bawah ini adalah pesanan Anda
+Pemesan : yoyoDestinasi Pengiriman : malangmi goreng		3		Rp. 36,000,00
+--------------------
+Total			3		Rp. 36,000,00
+
+Pembayaran			: Binar Cash
+Tanggal Transaksi		: 2024/05/05 23:19:57
+====================
+Simpan struk ini sebagai bukti pembayaran
+====================

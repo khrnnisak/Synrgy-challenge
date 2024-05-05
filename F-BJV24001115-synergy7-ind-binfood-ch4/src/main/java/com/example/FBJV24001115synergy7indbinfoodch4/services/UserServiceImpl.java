@@ -7,12 +7,15 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.FBJV24001115synergy7indbinfoodch4.models.Product;
 import com.example.FBJV24001115synergy7indbinfoodch4.models.User;
 import com.example.FBJV24001115synergy7indbinfoodch4.repositories.UserRepository;
 import com.example.FBJV24001115synergy7indbinfoodch4.utils.FormatMessageUtil;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Service
+@Slf4j
+
 public class UserServiceImpl implements UserService{
     @Autowired
     UserRepository userRepository;
@@ -23,13 +26,13 @@ public class UserServiceImpl implements UserService{
             User user = userRepository.findByUsername(username);
             Optional<User> userOptional = Optional.ofNullable(user);
             if (userOptional.isPresent()) {
-                System.out.println(FormatMessageUtil.duplicateMessage());
+                log.error(FormatMessageUtil.duplicateMessage());
             }else{
                 userRepository.userInsertData(email, username, password);
-                System.out.println(FormatMessageUtil.succesToAddMessage());
+                log.info(FormatMessageUtil.succesToAddMessage());
             }
         } catch (Exception e) {
-            System.out.println(FormatMessageUtil.failedToAddMessage() + e);
+            System.out.println(FormatMessageUtil.failedToAddMessage());
         } 
     }
 
@@ -46,7 +49,7 @@ public class UserServiceImpl implements UserService{
                 System.out.println(FormatMessageUtil.errorMessageFormat("Password Salah!"));
             }
         } catch (Exception e) {
-            System.out.println(FormatMessageUtil.failedToAddMessage() + e);
+            System.out.println(FormatMessageUtil.failedToEditMessage());
         } 
     }
 
@@ -62,13 +65,17 @@ public class UserServiceImpl implements UserService{
                 userRepository.userDeleteData(user_id);
             }
         } catch (Exception e) {
-            System.out.println(FormatMessageUtil.failedToAddMessage() + e);
+            System.out.println(FormatMessageUtil.failedToDeleteMessage());
         } 
     }
 
     @Override
     public UUID getUserId(String username) {
         try {
+            Optional<String> opt = Optional.ofNullable(username);
+            if (!opt.isPresent()) {
+                System.out.println(FormatMessageUtil.errorMessageFormat("Masukan tidak boleh kosong"));
+            }
             Optional<User> existUser = Optional.ofNullable(userRepository.findByUsername(username));
             if (!existUser.isPresent()) {
                 System.out.println(FormatMessageUtil.notFoundMessage());
@@ -77,7 +84,7 @@ public class UserServiceImpl implements UserService{
                 return choosenUser.getId();
             }
         } catch (Exception e) {
-            System.out.println(FormatMessageUtil.failedToAddMessage() + e);
+            System.out.println(FormatMessageUtil.notFoundMessage());
         } 
         return null;
     }
@@ -89,6 +96,10 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public User getById(UUID id) {
+        Optional<UUID> opt = Optional.ofNullable(id);
+            if (!opt.isPresent()) {
+                System.out.println(FormatMessageUtil.errorMessageFormat("Masukan tidak boleh kosong"));
+            }
         Optional<User> user = userRepository.findById(id);
         return user.get();
     }

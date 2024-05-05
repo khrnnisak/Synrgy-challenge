@@ -11,7 +11,11 @@ import com.example.FBJV24001115synergy7indbinfoodch4.services.UserService;
 import com.example.FBJV24001115synergy7indbinfoodch4.views.MainView;
 import com.example.FBJV24001115synergy7indbinfoodch4.views.UserView;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Controller
+@Slf4j
+
 public class UserController {
 
     @Autowired UserService userService;
@@ -20,19 +24,23 @@ public class UserController {
 
     public List<User> showAllUser(){
         return userService.getAllUsers();
-        // users.forEach(user -> System.out.println(user.getUsername()));
     }
 
     public void createUser(String email, String username, String password){
         userService.createUser(email, username, password);
+        userView.displayMainMenu();
     }
 
     public void updateUser(String username, String oldPassword, String newPassword){
         userService.updateUser(username, oldPassword, newPassword);
+        userView.displayMainMenu();
+
     }
 
     public void deleteUser(String username){
         userService.deleteUser(username);
+        userView.displayMainMenu();
+
     }
 
     public UUID getUserId(String username){
@@ -58,8 +66,8 @@ public class UserController {
                 mainView.displayView();
                 break;
             default:
-                System.out.println("Pilihan tidak valid.");
-                mainView.displayView();
+                log.error("Pilihan tidak valid.");
+                userView.displayMainMenu();
                 break;
         }
     }

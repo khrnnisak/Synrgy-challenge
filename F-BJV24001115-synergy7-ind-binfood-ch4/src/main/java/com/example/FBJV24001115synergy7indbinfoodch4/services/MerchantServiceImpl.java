@@ -4,15 +4,19 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+import org.hibernate.cache.spi.support.AbstractReadWriteAccess.Item;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.FBJV24001115synergy7indbinfoodch4.models.Merchant;
-import com.example.FBJV24001115synergy7indbinfoodch4.models.OrderDetail;
 import com.example.FBJV24001115synergy7indbinfoodch4.repositories.MerchantRepository;
 import com.example.FBJV24001115synergy7indbinfoodch4.utils.FormatMessageUtil;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Service
+@Slf4j
+
 public class MerchantServiceImpl implements MerchatService{
     @Autowired 
     MerchantRepository merchantRepository;
@@ -22,13 +26,13 @@ public class MerchantServiceImpl implements MerchatService{
         try {
             Optional<Merchant> existMerchant = Optional.ofNullable(merchantRepository.findByName(merchant.getName()));
             if (existMerchant.isPresent()) {
-                System.out.println(FormatMessageUtil.duplicateMessage());
+                log.error(FormatMessageUtil.duplicateMessage());
             }else{
                 merchantRepository.save(merchant);
-                System.out.println(FormatMessageUtil.succesToAddMessage());
+                log.info(FormatMessageUtil.succesToAddMessage());
             }
         } catch (Exception e) {
-            System.out.println(FormatMessageUtil.failedToAddMessage() + e);
+            System.out.println(FormatMessageUtil.failedToAddMessage());
         }        
     }
 
@@ -45,7 +49,7 @@ public class MerchantServiceImpl implements MerchatService{
                 System.out.println(FormatMessageUtil.succesToEditMessage());
             }
         } catch (Exception e) {
-            System.out.println(FormatMessageUtil.failedToAddMessage() + e);
+            System.out.println(FormatMessageUtil.failedToEditMessage());
         }   
     }
 
@@ -61,7 +65,7 @@ public class MerchantServiceImpl implements MerchatService{
                 System.out.println(FormatMessageUtil.succesToDeleteMessage());
             }
         } catch (Exception e) {
-            System.out.println(FormatMessageUtil.failedToAddMessage() + e);
+            System.out.println(FormatMessageUtil.failedToDeleteMessage());
         }  
        
     }
@@ -84,6 +88,10 @@ public class MerchantServiceImpl implements MerchatService{
     @Override
     public UUID getMerchantID(String merchant_name) {
         try {
+            Optional<String> merOptional = Optional.ofNullable(merchant_name);
+            if (!merOptional.isPresent()) {
+                System.out.println(FormatMessageUtil.errorMessageFormat("Masukan tidak boleh kosong"));
+            }
             Optional<Merchant> existMerchant = Optional.ofNullable(merchantRepository.findByName(merchant_name));
             if (!existMerchant.isPresent()) {
                 System.out.println(FormatMessageUtil.notFoundMessage());
@@ -92,7 +100,7 @@ public class MerchantServiceImpl implements MerchatService{
                 return merchant.getId();
             }
         } catch (Exception e) {
-            System.out.println(FormatMessageUtil.failedToAddMessage() + e);
+            System.out.println(FormatMessageUtil.notFoundMessage());
         }
         return null;  
     }
@@ -115,13 +123,17 @@ public class MerchantServiceImpl implements MerchatService{
                 System.out.println(FormatMessageUtil.succesToEditMessage());
             }
         } catch (Exception e) {
-            System.out.println(FormatMessageUtil.failedToAddMessage() + e);
+            System.out.println(FormatMessageUtil.failedToEditMessage());
         }
         
     }
 
     @Override
     public Merchant getMerchantById(UUID id) {
+        Optional<UUID> merOptional = Optional.ofNullable(id);
+        if (!merOptional.isPresent()) {
+            System.out.println(FormatMessageUtil.errorMessageFormat("Masukan tidak boleh kosong"));
+        }
         Optional<Merchant> merchant = merchantRepository.findById(id);
         return merchant.get();
     }

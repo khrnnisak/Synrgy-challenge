@@ -1,5 +1,6 @@
 package com.example.FBJV24001115synergy7indbinfoodch4.repositories;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,5 +14,6 @@ import com.example.FBJV24001115synergy7indbinfoodch4.models.Product;
 public interface OrderDetailRepository extends JpaRepository<OrderDetail, UUID> {
     OrderDetail findByOrderId(UUID id);
     OrderDetail findByOrderAndProduct(Order order, Product product);
+    List<OrderDetail> findByOrder(Order order);
 
 }

@@ -1,5 +1,6 @@
 package com.example.FBJV24001115synergy7indbinfoodch4.views;
 
+import java.util.List;
 import java.util.Scanner;
 import java.util.UUID;
 
@@ -43,15 +44,7 @@ public class MerchantView {
         String nama = input.next();
         System.out.print("Masukkan Lokasi Merchant : ");
         String lokasi = input.next();
-
-        Merchant merchant = Merchant.builder()
-                            .name(nama.toLowerCase())
-                            .merchant_location(lokasi.toLowerCase())
-                            .isOpened(true)
-                            .build();
-        merchantController.createMerchant(merchant);
-        displayMerchantMenu();
-
+        merchantController.createMerchant(nama, lokasi);
     }
 
     public void updateView(){
@@ -60,29 +53,56 @@ public class MerchantView {
         String merchant = input.next();
         System.out.print("Lokasi baru");
         String lokasi = input.next();
-
-        UUID merchant_id = merchantController.getMerchantId(merchant);
-        merchantController.updateMerchant(merchant_id, lokasi);
-        displayMerchantMenu();
+        merchantController.updateMerchant(merchant, lokasi);
     }
 
     public void deleteView(){
         System.out.println("==========================");
         System.out.print("Merchant yang ingin dihapus : ");
         String merchant = input.next();
+        System.out.print("Apakah anda yakin? (Y/N) ");
+        String confirm = input.nextLine();
+        if (confirm.equalsIgnoreCase("y")) {
+            merchantController.deleteMerchant(merchant);
 
-        UUID merchant_id = merchantController.getMerchantId(merchant);
-        merchantController.deleteMerchant(merchant_id);
-        displayMainMenu();
+        }
         
     }
 
     public void displayMerchants(){
-        
+        List<Merchant> merchants = merchantController.showAllMerchant();
+        merchantFormatDisplay(merchants);
     }
 
-    public void switchMerchant(){
+    public void merchantFormatDisplay(List<Merchant> merchants){
+        for (Merchant merchant : merchants) {
+            String status;
+            if (merchant.getIsOpened() == true) {
+                status = "Buka";
+            }else{
+                status = "Tutup";
+            }
+            System.out.println(merchant.getName() + " (" + status + ")");
+        }
+    }
 
+
+    public void switchMerchant(){
+        System.out.println(AdditionalUtil.headerFormat("Opened Merchant"));
+        List<Merchant> openedMerchants = merchantController.showOpenedMerchant();
+        merchantFormatDisplay(openedMerchants);
+        System.out.println("=========================================================");
+        System.out.println();
+
+        System.out.println(AdditionalUtil.headerFormat("Closed Merchant"));
+        List<Merchant> closedMerchants = merchantController.showClosedMerchant();
+        merchantFormatDisplay(closedMerchants);
+        System.out.println("=========================================================");
+        System.out.println();
+
+        System.out.print("Merchant yang ingin anda ubah : ");
+        String merchant = input.next();
+        merchantController.switchMerchant(merchant);
     }
 
 

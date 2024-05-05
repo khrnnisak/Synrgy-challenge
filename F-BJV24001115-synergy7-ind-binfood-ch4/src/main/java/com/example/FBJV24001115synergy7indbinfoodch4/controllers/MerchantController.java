@@ -12,54 +12,56 @@ import com.example.FBJV24001115synergy7indbinfoodch4.services.MerchatService;
 import com.example.FBJV24001115synergy7indbinfoodch4.views.MainView;
 import com.example.FBJV24001115synergy7indbinfoodch4.views.MerchantView;
 
-@Controller
+import lombok.extern.slf4j.Slf4j;
 
+@Controller
+@Slf4j
 public class MerchantController {
 
     @Autowired MerchatService merchantService;
     @Autowired MerchantView merchantView;
     @Autowired MainView mainView;
 
-    public void showAllMerchant(){
-        List<Merchant> merchants = merchantService.getAllMerchant();
-        for (Merchant merchant : merchants) {
-            String status;
-            if (merchant.getIsOpened() == true) {
-                status = "Buka";
-            }else{
-                status = "Tutup";
-            }
-            System.out.println(merchant.getName() + " (" + status + ")");
-        }
+    public List<Merchant> showAllMerchant(){
+        return merchantService.getAllMerchant();
     }
 
-    public void createMerchant(Merchant merchant){
+    public void createMerchant(String name, String lokasi){
+        
+        Merchant merchant = Merchant.builder()
+                            .name(name.toLowerCase())
+                            .merchant_location(lokasi.toLowerCase())
+                            .isOpened(true)
+                            .build();
         merchantService.createMerchant(merchant);
+        merchantView.displayMerchantMenu();
     }
 
-    public void updateMerchant(UUID id, String location){
-        merchantService.updateMerchant(id, location);
+    public void updateMerchant(String nama, String lokasi){
+        UUID merchant_id = getMerchantId(nama);
+        merchantService.updateMerchant(merchant_id, lokasi);
+        merchantView.displayMerchantMenu();
+
     }
 
-    public void deleteMerchant(UUID merchant_id){
+    public void deleteMerchant(String merchant){
+        UUID merchant_id = getMerchantId(merchant);
         merchantService.deleteMerchant(merchant_id);
+        merchantView.displayMainMenu();
     }
-    public void showOpenedMerchant(){
-        List<Merchant> openedMerchants = merchantService.getOpenedMerchant();
-        openedMerchants.forEach(merchant -> System.out.println(merchant.getName()));
+    public List<Merchant> showOpenedMerchant(){
+        return merchantService.getOpenedMerchant();
 
     }
 
-    public void showClosedMerchant(){
-        List<Merchant> closedMerchants = merchantService.getOpenedMerchant();
-        closedMerchants.forEach(merchant -> System.out.println(merchant.getName()));
+    public List<Merchant> showClosedMerchant(){
+        return merchantService.getClosedMerchant();
 
     }
 
     public void switchMerchant(String merchantName){
-        showAllMerchant();
         merchantService.switchMerchant(merchantName);
-        showAllMerchant();
+        merchantView.displayMainMenu();
     }
 
     public UUID getMerchantId(String merchantName){
@@ -84,7 +86,7 @@ public class MerchantController {
                 mainView.displayView();
                 break;
             default:
-                System.out.println("Pilihan tidak valid.");
+                log.error("Pilihan tidak valid.");
                 mainView.displayView();
                 break;
         }

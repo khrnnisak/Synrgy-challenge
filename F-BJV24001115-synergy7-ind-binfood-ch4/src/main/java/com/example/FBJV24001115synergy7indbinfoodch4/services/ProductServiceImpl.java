@@ -5,14 +5,20 @@ import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import com.example.FBJV24001115synergy7indbinfoodch4.models.Order;
+import com.example.FBJV24001115synergy7indbinfoodch4.models.Merchant;
 import com.example.FBJV24001115synergy7indbinfoodch4.models.Product;
 import com.example.FBJV24001115synergy7indbinfoodch4.repositories.ProductRepository;
 import com.example.FBJV24001115synergy7indbinfoodch4.utils.FormatMessageUtil;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Service
+@Slf4j
+
 public class ProductServiceImpl implements ProductService{
 
     @Autowired
@@ -29,7 +35,7 @@ public class ProductServiceImpl implements ProductService{
                 System.out.println(FormatMessageUtil.succesToAddMessage());
             }
         } catch (Exception e) {
-            System.out.println(FormatMessageUtil.failedToAddMessage() + e);
+            System.out.println(FormatMessageUtil.failedToAddMessage());
         } 
     }
 
@@ -38,15 +44,15 @@ public class ProductServiceImpl implements ProductService{
         try {
             Optional<Product> existProduct = productRepository.findById(id);
             if (!existProduct.isPresent()) {
-                System.out.println(FormatMessageUtil.notFoundMessage());
+                log.error(FormatMessageUtil.notFoundMessage());
             }else{
                 Product choosenProduct = existProduct.get();
                 choosenProduct.setPrice(price);
                 productRepository.save(choosenProduct);
-                System.out.println(FormatMessageUtil.succesToEditMessage());
+                log.info(FormatMessageUtil.succesToEditMessage());
             }
         } catch (Exception e) {
-            System.out.println(FormatMessageUtil.failedToAddMessage() + e);
+            System.out.println(FormatMessageUtil.failedToAddMessage());
         } 
         
     }
@@ -63,7 +69,7 @@ public class ProductServiceImpl implements ProductService{
                 System.out.println(FormatMessageUtil.succesToDeleteMessage());
             }
         } catch (Exception e) {
-            System.out.println(FormatMessageUtil.failedToAddMessage() + e);
+            System.out.println(FormatMessageUtil.failedToAddMessage());
         } 
 
     }
@@ -76,6 +82,12 @@ public class ProductServiceImpl implements ProductService{
     @Override
     public UUID getIdProduct(String product_name) {
         try {
+            
+            Optional<String> opt = Optional.ofNullable(product_name);
+            if (!opt.isPresent()) {
+                System.out.println(FormatMessageUtil.errorMessageFormat("Masukan tidak boleh kosong"));
+            }
+
             Optional<Product> existProduct = Optional.ofNullable(productRepository.findByName(product_name));
             if (!existProduct.isPresent()) {
                 System.out.println(FormatMessageUtil.notFoundMessage());
@@ -84,7 +96,7 @@ public class ProductServiceImpl implements ProductService{
                 return choosenProduct.getId();
             }
         } catch (Exception e) {
-            System.out.println(FormatMessageUtil.failedToAddMessage() + e);
+            System.out.println(FormatMessageUtil.failedToAddMessage());
         } 
         return null;
     }
@@ -96,8 +108,23 @@ public class ProductServiceImpl implements ProductService{
 
     @Override
     public Product getProductById(UUID id) {
+        Optional<UUID> opt = Optional.ofNullable(id);
+            if (!opt.isPresent()) {
+                System.out.println(FormatMessageUtil.errorMessageFormat("Masukan tidak boleh kosong"));
+            }
         Optional<Product> product = productRepository.findById(id);
         return product.get();
+    }
+    @Override
+    public List<Product> getByMerchant(Merchant merchant) {
+        Optional<Merchant> opt = Optional.ofNullable(merchant);
+        if (!opt.isPresent()) {
+            System.out.println(FormatMessageUtil.errorMessageFormat("Masukan tidak boleh kosong"));
+        }
+        Pageable pageable = PageRequest.of(0, 2);
+
+        List<Product> products = productRepository.findByMerchant(merchant, pageable);
+        return products;
     }
 
     
