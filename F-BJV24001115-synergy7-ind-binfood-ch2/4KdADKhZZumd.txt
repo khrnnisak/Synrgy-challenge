@@ -6,7 +6,10 @@ BinarFud
 Terima kasih sudah memesan di BinarFud
 
 Di bawah ini adalah pesanan Anda
-Pemesan : yoyoDestinasi Pengiriman : malangmi goreng		3		Rp. 36,000,00
+Pemesan : yoyo
+Destinasi Pengiriman : malang
+
+mi goreng		3		Rp. 36,000,00
 --------------------
 Total			3		Rp. 36,000,00
 

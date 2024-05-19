@@ -1,0 +1,17 @@
+
+=========================================================
+BinarFud
+=========================================================
+
+Terima kasih sudah memesan di Binar Cash
+
+Di bawah ini adalah pesanan Anda
+Nasi Goreng		2		30000
+------------------------------------------------+
+Total			2		30000
+
+Pembayaran			: Binar Cash
+Tanggal Transaksi		: 2024/03/16 08:21:07
+=========================================================
+Simpan struk ini sebagai bukti pembayaran
+=========================================================
