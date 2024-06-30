@@ -1,4 +1,4 @@
-package com.example.FBJV24001115synergy7indbinfoodch5.controllers;
+package com.example.FBJV24001115synergy7indbinfoodch6.controllers;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -13,6 +13,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -22,21 +23,21 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.FBJV24001115synergy7indbinfoodch5.dto.merchant.MerchantDTO;
-import com.example.FBJV24001115synergy7indbinfoodch5.dto.order.OrderDTO;
-import com.example.FBJV24001115synergy7indbinfoodch5.dto.orderDetail.OrderDetailCreateDTO;
-import com.example.FBJV24001115synergy7indbinfoodch5.dto.orderDetail.OrderDetailDTO;
-import com.example.FBJV24001115synergy7indbinfoodch5.dto.orderDetail.OrderDetailFieldDTO;
-import com.example.FBJV24001115synergy7indbinfoodch5.dto.orderDetail.OrderDetailReportDTO;
-import com.example.FBJV24001115synergy7indbinfoodch5.dto.orderDetail.OrderDetailUpdateDTO;
-import com.example.FBJV24001115synergy7indbinfoodch5.dto.product.ProductDTO;
-import com.example.FBJV24001115synergy7indbinfoodch5.models.Order;
-import com.example.FBJV24001115synergy7indbinfoodch5.models.OrderDetail;
-import com.example.FBJV24001115synergy7indbinfoodch5.models.Product;
-import com.example.FBJV24001115synergy7indbinfoodch5.services.JasperService;
-import com.example.FBJV24001115synergy7indbinfoodch5.services.OrderDetailService;
-import com.example.FBJV24001115synergy7indbinfoodch5.utils.AdditionalUtil;
-import com.example.FBJV24001115synergy7indbinfoodch5.utils.FormatMessageUtil;
+import com.example.FBJV24001115synergy7indbinfoodch6.dto.merchant.MerchantDTO;
+import com.example.FBJV24001115synergy7indbinfoodch6.dto.order.OrderDTO;
+import com.example.FBJV24001115synergy7indbinfoodch6.dto.orderDetail.OrderDetailCreateDTO;
+import com.example.FBJV24001115synergy7indbinfoodch6.dto.orderDetail.OrderDetailDTO;
+import com.example.FBJV24001115synergy7indbinfoodch6.dto.orderDetail.OrderDetailFieldDTO;
+import com.example.FBJV24001115synergy7indbinfoodch6.dto.orderDetail.OrderDetailReportDTO;
+import com.example.FBJV24001115synergy7indbinfoodch6.dto.orderDetail.OrderDetailUpdateDTO;
+import com.example.FBJV24001115synergy7indbinfoodch6.dto.product.ProductDTO;
+import com.example.FBJV24001115synergy7indbinfoodch6.models.Order;
+import com.example.FBJV24001115synergy7indbinfoodch6.models.OrderDetail;
+import com.example.FBJV24001115synergy7indbinfoodch6.models.Product;
+import com.example.FBJV24001115synergy7indbinfoodch6.services.JasperService;
+import com.example.FBJV24001115synergy7indbinfoodch6.services.OrderDetailService;
+import com.example.FBJV24001115synergy7indbinfoodch6.utils.AdditionalUtil;
+import com.example.FBJV24001115synergy7indbinfoodch6.utils.FormatMessageUtil;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -63,6 +64,7 @@ public class OrderDetailController {
         return new ResponseEntity<>(orderDetailList, HttpStatus.OK);
     }
     @PostMapping()
+    @PreAuthorize("hasRole('ROLE_USER')")
     public ResponseEntity<Map<String, Object>> createOrderDetail(@RequestBody OrderDetailCreateDTO orderDetailCreateDTO){
         ResponseEntity<ProductDTO> product = productController.geProductById(orderDetailCreateDTO.getProduct_id());
         ProductDTO productDTO = product.getBody();
@@ -87,6 +89,7 @@ public class OrderDetailController {
     }
 
     @PatchMapping("{id}")
+    @PreAuthorize("hasRole('ROLE_USER')")
     public ResponseEntity<Map<String, Object>> update(@PathVariable("id") UUID id, @RequestBody OrderDetailUpdateDTO orderDetailUpdateDTO){
         OrderDetailDTO choosenOrderDetail = orderDetailService.getOrderDetailById(id);
         double total_price = orderDetailService.getTotalPrice(choosenOrderDetail.getProduct(), orderDetailUpdateDTO.getQuantity());
@@ -101,12 +104,14 @@ public class OrderDetailController {
 
 
     @DeleteMapping("{id}")
+    @PreAuthorize("hasRole('ROLE_USER')")
     public ResponseEntity<Void> delete(@PathVariable("id") UUID id){
         orderDetailService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PostMapping("checkout/{order_id}")
+    @PreAuthorize("hasRole('ROLE_USER')")
     public ResponseEntity<Map<String, Object>> checkout(@PathVariable("order_id") UUID order_id){
         ResponseEntity<OrderDTO> order = orderController.getOrderById(order_id);
         OrderDTO orderDTO = order.getBody();
@@ -123,10 +128,6 @@ public class OrderDetailController {
         response.put("status", "suscces");
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     } 
-
-
-
-
     public void printReceipt(String payment, Order order) {
         String path = AdditionalUtil.pathFormat();
 
