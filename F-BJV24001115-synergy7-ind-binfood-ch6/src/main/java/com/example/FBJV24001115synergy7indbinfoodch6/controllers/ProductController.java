@@ -19,13 +19,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.FBJV24001115synergy7indbinfoodch6.dto.merchant.MerchantDTO;
 import com.example.FBJV24001115synergy7indbinfoodch6.dto.product.ProductCreateDTO;
 import com.example.FBJV24001115synergy7indbinfoodch6.dto.product.ProductDTO;
 import com.example.FBJV24001115synergy7indbinfoodch6.dto.product.ProductUpdateDTO;
-import com.example.FBJV24001115synergy7indbinfoodch6.models.Merchant;
-import com.example.FBJV24001115synergy7indbinfoodch6.models.Product;
-import com.example.FBJV24001115synergy7indbinfoodch6.models.Product.CategoryProduct;
 import com.example.FBJV24001115synergy7indbinfoodch6.services.ProductService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -41,29 +37,22 @@ public class ProductController {
     @Autowired ModelMapper modelMapper;
 
     @GetMapping()
-    public ResponseEntity<List<ProductDTO>>  showAllProducts(){
-        List<Product> products = productService.getAllProduct();
-        List<ProductDTO> productList = products
-                .stream()
-                .map(product -> modelMapper.map(product, ProductDTO.class))
-                .toList();
-        return new ResponseEntity<>(productList, HttpStatus.OK);
+    public ResponseEntity<Map<String, Object>>showAllProducts(){
+        Map<String, Object> response = new HashMap<>();
+        List<ProductDTO> products = productService.getAllProduct();
+        response.put("status", "success");
+        if (products.isEmpty()) {
+            response.put("data", null);
+            response.put("message", "Product is empty");
+        }else{
+            response.put("data", products);
+        }
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
     @PostMapping("add")
     @PreAuthorize("hasRole('ROLE_MERCHANT')")
     public ResponseEntity<Map<String, Object>> createProduct(@RequestBody ProductCreateDTO productCreateDTO){
-        ResponseEntity<MerchantDTO> choosenMerchant = merchantController.getMerchantById(productCreateDTO.getMerchant_id());
-        MerchantDTO merchantDTO = choosenMerchant.getBody();
-        Merchant merchant = modelMapper.map(merchantDTO, Merchant.class);
-        CategoryProduct category = CategoryProduct.valueOf(productCreateDTO.getCategory().toString().toUpperCase());
-        Product product = Product.builder()
-                .name(productCreateDTO.getName().toLowerCase())
-                .price((double) productCreateDTO.getPrice())
-                .category(category)
-                .merchant(merchant)
-                .build();
-
-        ProductDTO productDTO = productService.createdProduct(product);
+        ProductDTO productDTO = productService.createdProduct(productCreateDTO);
         Map<String, Object> response = new HashMap<>();
 
         response.put("status", "suscces");
@@ -79,7 +68,7 @@ public class ProductController {
         Map<String, Object> response = new HashMap<>();
 
         ProductDTO product = productService.updateProduct(id, productUpdateDTO);
-        response.put("status", "suscces");
+        response.put("status", "success");
         response.put("data", product);
 
         return new ResponseEntity<>(response, HttpStatus.OK);
@@ -87,9 +76,9 @@ public class ProductController {
 
     @DeleteMapping("{id}")
     @PreAuthorize("hasRole('ROLE_MERCHANT')")
-    public ResponseEntity<Void> deleteProduct(@PathVariable("id") UUID id){
+    public ResponseEntity<String> deleteProduct(@PathVariable("id") UUID id){
         productService.deleteProduct(id);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return ResponseEntity.ok("Successfully deleted");
     }
 
     @GetMapping("by-id/{id}")
@@ -100,16 +89,17 @@ public class ProductController {
     }
 
     @GetMapping("by-merchant/{merchant_id}")
-    public ResponseEntity<List<ProductDTO>> getProductByMerchant(@PathVariable("merchant_id") UUID merchant_id){
-        ResponseEntity<MerchantDTO> choosenMerchant = merchantController.getMerchantById(merchant_id);
-        MerchantDTO merchantDTO = choosenMerchant.getBody();
-        Merchant merchant = modelMapper.map(merchantDTO, Merchant.class);
-        List<Product> products = productService.getByMerchant(merchant);
-        List<ProductDTO> productList = products
-                .stream()
-                .map(product -> modelMapper.map(product, ProductDTO.class))
-                .toList();
-        return new ResponseEntity<>(productList, HttpStatus.OK);
+    public ResponseEntity<Map<String, Object>> getProductByMerchant(@PathVariable("merchant_id") UUID merchantId){
+        Map<String, Object> response = new HashMap<>();
+        List<ProductDTO> products = productService.getByMerchant(merchantId);
+        response.put("status", "success");
+        if (products.isEmpty()) {
+            response.put("data", null);
+            response.put("message", "Product is empty");
+        }else{
+            response.put("data", products);
+        }
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
 }

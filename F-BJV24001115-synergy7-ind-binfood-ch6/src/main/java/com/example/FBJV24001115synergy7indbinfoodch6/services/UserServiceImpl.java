@@ -1,5 +1,6 @@
 package com.example.FBJV24001115synergy7indbinfoodch6.services;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -40,43 +41,7 @@ public class UserServiceImpl implements UserService{
     public Optional<User> isUserExist(String email, String username) {
         return userRepository.findByEmailandUsername(email, username);
     }
-    @Override
-    public UserDTO createUser(RegisterRequestDTO registerRequestDTO) {
-         try {
-            Set<Role> roles = new HashSet<>();
-            Set<String> reqRoles = registerRequestDTO.getRole();
-            if (reqRoles == null) {
-                Role userRole = roleRepository.findByName(ERole.ROLE_USER)
-                    .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-            roles.add(userRole);
-            }else{
-                reqRoles.forEach(role -> {
-                    if (role.equalsIgnoreCase("role_merchant")) {
-                        Role userRole = roleRepository.findByName(ERole.ROLE_MERCHANT)
-                                .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-                        roles.add(userRole);
-                    }else{
-                        Role userRole = roleRepository.findByName(ERole.ROLE_USER)
-                                .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-                        roles.add(userRole);
-                    }
-                });
-            }
-            User user = User.builder()
-                .email_addres(registerRequestDTO.getEmail_addres())
-                .username(registerRequestDTO.getUsername())
-                .password(passwordEncoder.encode(registerRequestDTO.getPassword()))
-                .roles(roles)
-                .build();
-            userRepository.save(user);
-            log.info(FormatMessageUtil.succesToAddMessage());
-            return modelMapper.map(user, UserDTO.class);
-            
-        } catch (Exception e) {
-            log.error(FormatMessageUtil.failedToAddMessage());
-        } 
-        return null;
-    }
+   
 
     @Override
     public UserDTO updateUser(UUID id, UserUpdateDTO userUpdateDTO){
@@ -140,6 +105,22 @@ public class UserServiceImpl implements UserService{
         }
        
         return null;
+    }
+    @Override
+    public User createUserPostLogin(String name, String email) {
+        Role role = roleRepository.findByName(ERole.ROLE_USER)
+                    .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+        Set<Role> roles = new HashSet<>(Collections.singletonList(role));
+
+        User user = userRepository.findByUsername(name).orElseGet(() -> {
+            User newUser = User.builder()
+                .username(name)
+                .emailAddress(email)
+                .roles(roles)
+                .build();
+            return userRepository.save(newUser);
+        });
+        return user;
     }
 
 }

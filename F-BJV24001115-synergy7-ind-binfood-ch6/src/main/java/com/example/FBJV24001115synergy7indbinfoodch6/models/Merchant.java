@@ -25,7 +25,7 @@ public class Merchant extends BaseModel{
 
     private String name;
     private String location;
-    private boolean is_opened = Boolean.TRUE;
+    private boolean opened = Boolean.TRUE;
 
     @OneToMany(mappedBy = "merchant", cascade = CascadeType.ALL)
     private List<Product> products;

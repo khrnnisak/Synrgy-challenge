@@ -8,7 +8,5 @@ import lombok.Data;
 public class OrderDetailUpdateDTO {
     private Integer quantity;
 
-    @JsonIgnore
-    private Double total_price;
 
 }

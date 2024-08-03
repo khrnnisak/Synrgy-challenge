@@ -24,10 +24,10 @@ public class OrderDetail extends BaseModel{
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private Integer quantity;
-    private Double total_price;
+    private Double totalPrice;
 
     @ManyToOne(targetEntity = Order.class)
-    @JoinColumn(name = "orderId")
+    @JoinColumn(name = "order_id")
     private Order order;
 
     @ManyToOne(targetEntity = Product.class)

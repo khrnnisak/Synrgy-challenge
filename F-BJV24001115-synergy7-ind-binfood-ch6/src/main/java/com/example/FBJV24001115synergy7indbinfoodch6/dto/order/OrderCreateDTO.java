@@ -6,6 +6,6 @@ import lombok.Data;
 
 @Data
 public class OrderCreateDTO {
-    private UUID user_id;
+    private UUID userId;
     private String destination;
 }

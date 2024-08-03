@@ -26,7 +26,8 @@ public interface UserRepository extends JpaRepository<User, UUID>{
     User findByUsernameAndPassword(String username, String password);
 
     Optional<User> findByUsername(String username);
+    Optional<User> findByEmailAddress(String emailAddress);
 
-    @Query(value = "select * from users where email_addres =? and username =? and deleted_date is null", nativeQuery = true)
-    Optional<User> findByEmailandUsername(String email_addres, String username);
+    @Query(value = "select * from users where email_address =?1 and username =?2 and deleted_date is null", nativeQuery = true)
+    Optional<User> findByEmailandUsername(String emailAddress, String username);
 }

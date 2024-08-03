@@ -15,10 +15,10 @@ public interface MerchantRepository extends JpaRepository<Merchant, UUID>{
 
     Merchant findByNameAndLocation(String name, String location);
 
-    @Query(value = "select * from merchant where is_opened = true and deleted_date is null", nativeQuery = true)
+    @Query(value = "select * from merchant where opened = true and deleted_date is null", nativeQuery = true)
     List<Merchant> findOpenedMerchant();
 
-    @Query(value = "select * from merchant where is_opened = false and deleted_date is null", nativeQuery = true)
+    @Query(value = "select * from merchant where opened = false and deleted_date is null", nativeQuery = true)
     List<Merchant> findClosedMerchant();
 
 }

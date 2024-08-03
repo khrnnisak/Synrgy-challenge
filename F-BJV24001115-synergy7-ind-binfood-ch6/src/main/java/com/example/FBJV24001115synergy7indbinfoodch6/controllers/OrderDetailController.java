@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Scanner;
 import java.util.UUID;
 
 import org.modelmapper.ModelMapper;
@@ -23,19 +22,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.FBJV24001115synergy7indbinfoodch6.dto.merchant.MerchantDTO;
-import com.example.FBJV24001115synergy7indbinfoodch6.dto.order.OrderDTO;
 import com.example.FBJV24001115synergy7indbinfoodch6.dto.orderDetail.OrderDetailCreateDTO;
 import com.example.FBJV24001115synergy7indbinfoodch6.dto.orderDetail.OrderDetailDTO;
-import com.example.FBJV24001115synergy7indbinfoodch6.dto.orderDetail.OrderDetailFieldDTO;
 import com.example.FBJV24001115synergy7indbinfoodch6.dto.orderDetail.OrderDetailReportDTO;
 import com.example.FBJV24001115synergy7indbinfoodch6.dto.orderDetail.OrderDetailUpdateDTO;
-import com.example.FBJV24001115synergy7indbinfoodch6.dto.product.ProductDTO;
 import com.example.FBJV24001115synergy7indbinfoodch6.models.Order;
-import com.example.FBJV24001115synergy7indbinfoodch6.models.OrderDetail;
-import com.example.FBJV24001115synergy7indbinfoodch6.models.Product;
 import com.example.FBJV24001115synergy7indbinfoodch6.services.JasperService;
 import com.example.FBJV24001115synergy7indbinfoodch6.services.OrderDetailService;
+import com.example.FBJV24001115synergy7indbinfoodch6.services.OrderService;
 import com.example.FBJV24001115synergy7indbinfoodch6.utils.AdditionalUtil;
 import com.example.FBJV24001115synergy7indbinfoodch6.utils.FormatMessageUtil;
 
@@ -50,37 +44,28 @@ public class OrderDetailController {
     @Autowired OrderController orderController;
     @Autowired ModelMapper modelMapper;
     @Autowired JasperService jasperService;
+    @Autowired OrderService orderService;
 
-    @GetMapping("{order_id}")
-    public ResponseEntity<List<OrderDetailDTO>> showAllOrderDetail(@PathVariable("order_id") UUID order_id){
-        ResponseEntity<OrderDTO> order = orderController.getOrderById(order_id);
-        OrderDTO orderDTO = order.getBody();
-        Order choosenOrder = modelMapper.map(orderDTO, Order.class);
-        List<OrderDetail> orderDetails = orderDetailService.getOrderDetailByOrder(choosenOrder);
-        List<OrderDetailDTO> orderDetailList = orderDetails
-                .stream()
-                .map(orderDetail -> modelMapper.map(orderDetail, OrderDetailDTO.class))
-                .toList();
-        return new ResponseEntity<>(orderDetailList, HttpStatus.OK);
+    @GetMapping("{user_id}")
+    @PreAuthorize("hasRole('ROLE_USER')")
+    public ResponseEntity<Map<String, Object>> showAllOrderDetail(@PathVariable("user_id") UUID user_id){
+        Map<String, Object> response = new HashMap<>();
+
+        List<OrderDetailDTO> orderDetails = orderDetailService.getOrderDetail(user_id);
+        response.put("status", "success");
+        if (orderDetails.isEmpty()) {
+            response.put("data", null);
+            response.put("message", "Merchant is empty");
+        }else{
+            response.put("data", orderDetails);
+        }
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
     @PostMapping()
     @PreAuthorize("hasRole('ROLE_USER')")
     public ResponseEntity<Map<String, Object>> createOrderDetail(@RequestBody OrderDetailCreateDTO orderDetailCreateDTO){
-        ResponseEntity<ProductDTO> product = productController.geProductById(orderDetailCreateDTO.getProduct_id());
-        ProductDTO productDTO = product.getBody();
-        Product choosenProduct = modelMapper.map(productDTO, Product.class);
-        ResponseEntity<OrderDTO> order = orderController.getOrderById(orderDetailCreateDTO.getOrder_id());
+        OrderDetailDTO orderDetailDTO = orderDetailService.create(orderDetailCreateDTO);
 
-        OrderDTO orderDTO = order.getBody();
-        Order choosenOrder = modelMapper.map(orderDTO, Order.class);
-        double total_price = orderDetailService.getTotalPrice(choosenProduct, orderDetailCreateDTO.getQuantity());
-        OrderDetail orderDetail = OrderDetail.builder()
-                .order(choosenOrder)
-                .product(choosenProduct)
-                .quantity(orderDetailCreateDTO.getQuantity())
-                .total_price(total_price)
-                .build();
-        OrderDetailDTO orderDetailDTO = orderDetailService.create(orderDetail);
         Map<String, Object> response = new HashMap<>();
         response.put("status", "suscces");
         response.put("data", orderDetailDTO);
@@ -91,43 +76,36 @@ public class OrderDetailController {
     @PatchMapping("{id}")
     @PreAuthorize("hasRole('ROLE_USER')")
     public ResponseEntity<Map<String, Object>> update(@PathVariable("id") UUID id, @RequestBody OrderDetailUpdateDTO orderDetailUpdateDTO){
-        OrderDetailDTO choosenOrderDetail = orderDetailService.getOrderDetailById(id);
-        double total_price = orderDetailService.getTotalPrice(choosenOrderDetail.getProduct(), orderDetailUpdateDTO.getQuantity());
-        orderDetailUpdateDTO.setTotal_price(total_price);
         OrderDetailDTO orderDetailDTO = orderDetailService.update(id, orderDetailUpdateDTO);
+
         Map<String, Object> response = new HashMap<>();
         response.put("status", "suscces");
         response.put("data", orderDetailDTO);
+        
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-
-
     @DeleteMapping("{id}")
     @PreAuthorize("hasRole('ROLE_USER')")
-    public ResponseEntity<Void> delete(@PathVariable("id") UUID id){
+    public ResponseEntity<String> delete(@PathVariable("id") UUID id){
         orderDetailService.delete(id);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return ResponseEntity.ok("Successfully deleted");
     }
 
-    @PostMapping("checkout/{order_id}")
+    @GetMapping("checkout/{order_id}")
     @PreAuthorize("hasRole('ROLE_USER')")
-    public ResponseEntity<Map<String, Object>> checkout(@PathVariable("order_id") UUID order_id){
-        ResponseEntity<OrderDTO> order = orderController.getOrderById(order_id);
-        OrderDTO orderDTO = order.getBody();
-        Order choosenOrder = modelMapper.map(orderDTO, Order.class);
+    public ResponseEntity<Map<String, Object>> checkout(@PathVariable("order_id") UUID orderId){
 
-        List<OrderDetail> orderDetails = orderDetailService.getOrderDetailByOrder(choosenOrder);
-        
-        List<OrderDetailFieldDTO> orderDetailList = orderDetails
-            .stream()
-            .map(orderDetail -> modelMapper.map(orderDetails, OrderDetailFieldDTO.class))
-            .toList();
-        
+        OrderDetailReportDTO orderDetails = orderDetailService.getOrderDetailByOrder(orderId);
+        if (orderDetails != null) {
+            orderService.prosesOrder(orderId);
+        }
         Map<String, Object> response = new HashMap<>();
-        response.put("status", "suscces");
-        return new ResponseEntity<>(response, HttpStatus.CREATED);
+        response.put("status", "success");
+        response.put("data", orderDetails);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     } 
+
     public void printReceipt(String payment, Order order) {
         String path = AdditionalUtil.pathFormat();
 

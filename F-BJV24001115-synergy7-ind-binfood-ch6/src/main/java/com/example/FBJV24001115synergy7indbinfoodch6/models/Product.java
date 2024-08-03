@@ -26,6 +26,7 @@ public class Product extends BaseModel{
 
     private String name;
     private Double price;
+    private int stock;
 
     @Enumerated(EnumType.STRING)
     private CategoryProduct category;

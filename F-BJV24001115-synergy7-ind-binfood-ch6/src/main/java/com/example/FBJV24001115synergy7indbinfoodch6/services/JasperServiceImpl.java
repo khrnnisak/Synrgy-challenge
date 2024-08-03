@@ -48,7 +48,7 @@ public byte[] getOrderInvoice(OrderDetailReportDTO orderDetailReportDTO) throws 
         parameters.put("user", String.valueOf(orderDetailReportDTO.getUser()));
         parameters.put("destination", String.valueOf(orderDetailReportDTO.getDestination()));
         parameters.put("total", String.valueOf(orderDetailReportDTO.getTotal()));
-        parameters.put("totalQty", String.valueOf(orderDetailReportDTO.getTotal_qty()));
+        parameters.put("totalQty", String.valueOf(orderDetailReportDTO.getTotalQty()));
         parameters.put("payment", String.valueOf(orderDetailReportDTO.getPayment()));
         parameters.put("date", String.valueOf(orderDetailReportDTO.getDate()));
 

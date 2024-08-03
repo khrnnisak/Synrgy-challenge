@@ -3,15 +3,19 @@ package com.example.FBJV24001115synergy7indbinfoodch6.services;
 import java.util.List;
 import java.util.UUID;
 
+import com.example.FBJV24001115synergy7indbinfoodch6.dto.order.OrderCreateDTO;
 import com.example.FBJV24001115synergy7indbinfoodch6.dto.order.OrderDTO;
-import com.example.FBJV24001115synergy7indbinfoodch6.dto.order.OrderUpdateDTO;
 import com.example.FBJV24001115synergy7indbinfoodch6.models.Order;
 
 public interface OrderService {
-    OrderDTO createOrder(Order order);
-    OrderDTO updateOrder(UUID id, OrderUpdateDTO orderUpdateDTO);
+    OrderDTO createOrder(OrderCreateDTO orderCreateDTO);
+    OrderDTO updateOrder(UUID id, String destination);
     void deleteOrder(UUID id);
-    List<Order> getAllOrder();
+    List<OrderDTO> getAllOrder(UUID userId);
     OrderDTO getById(UUID id);
+
+    void cancelOrder(UUID orderId);
+    void confirmOrder(UUID orderId);
+    void prosesOrder(UUID orderId);
 
 }

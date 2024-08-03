@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class RegisterRequestDTO {
     private String username;
-    private String email_addres;
+    private String emailAddress;
     private String password;
-    private Set<String> role;
+    private Set<String> roles;
 }

@@ -17,13 +17,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.example.FBJV24001115synergy7indbinfoodch6.dto.auth.RegisterRequestDTO;
-import com.example.FBJV24001115synergy7indbinfoodch6.dto.user.UserCreateDTO;
 import com.example.FBJV24001115synergy7indbinfoodch6.dto.user.UserDTO;
 import com.example.FBJV24001115synergy7indbinfoodch6.dto.user.UserUpdateDTO;
 import com.example.FBJV24001115synergy7indbinfoodch6.models.accounts.User;
+import com.example.FBJV24001115synergy7indbinfoodch6.services.MailService;
 import com.example.FBJV24001115synergy7indbinfoodch6.services.UserService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -35,6 +34,7 @@ public class UserController {
 
     @Autowired UserService userService;
     @Autowired ModelMapper modelMapper;
+    @Autowired MailService mailService;
 
     @GetMapping()
     public ResponseEntity<List<UserDTO>> showAllUser(){
@@ -46,16 +46,7 @@ public class UserController {
         return new ResponseEntity<>(userList, HttpStatus.OK);
     }
 
-    @PostMapping("add")
-    public ResponseEntity<Map<String, Object>> createUser(@RequestBody RegisterRequestDTO registerRequestDTO){
-        Map<String, Object> response = new HashMap<>();
-        UserDTO user = userService.createUser(registerRequestDTO);
-
-        response.put("status", "suscces");
-        response.put("data", user);
-
-        return new ResponseEntity<>(response, HttpStatus.CREATED);
-    }
+    
     @PatchMapping("{id}")
     @PreAuthorize("hasRole('ROLE_USER')")
     public ResponseEntity<Map<String, Object>> updateUser(@PathVariable("id") UUID id, @RequestBody UserUpdateDTO userUpdateDTO){
@@ -69,9 +60,9 @@ public class UserController {
 
     @DeleteMapping("{id}")
     @PreAuthorize("hasRole('ROLE_USER')")
-    public ResponseEntity<Void> deleteUser(@PathVariable("id") UUID id){
+    public ResponseEntity<String> deleteUser(@PathVariable("id") UUID id){
         userService.deleteUser(id);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return ResponseEntity.ok("Successfully deleted");
 
 
     }
@@ -81,6 +72,7 @@ public class UserController {
         return new ResponseEntity<>(user, HttpStatus.OK);
 
     }
+    
 
     
 }

@@ -1,5 +1,6 @@
 package com.example.FBJV24001115synergy7indbinfoodch6.models.accounts;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.UUID;
 
@@ -19,9 +20,7 @@ import lombok.*;
 @AllArgsConstructor
 @Entity
 @Table(name = "roles")
-@SQLDelete(sql = "update users set deleted_date = now() where id =?")
-@SQLRestriction("deleted_date is null")
-public class Role extends BaseModel{
+public class Role implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;

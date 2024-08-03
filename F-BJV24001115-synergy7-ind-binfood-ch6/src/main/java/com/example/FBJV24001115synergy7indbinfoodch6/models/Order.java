@@ -1,6 +1,7 @@
 package com.example.FBJV24001115synergy7indbinfoodch6.models;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -25,9 +26,17 @@ public class Order extends BaseModel{
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
-    private LocalDate order_time;
+    private LocalDateTime orderTime;
     private String destination;
-    private Boolean isCompleted = Boolean.FALSE;
+
+    @Enumerated(EnumType.STRING)
+    private OrderStatus status;
+    public enum OrderStatus{
+        SELESAI,
+        BELUM,
+        PROSES,
+        BATAL
+    }
 
     @ManyToOne(targetEntity = User.class)
     @JoinColumn(name = "user_id")

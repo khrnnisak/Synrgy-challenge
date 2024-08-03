@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
-
+import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +22,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.FBJV24001115synergy7indbinfoodch6.dto.merchant.MerchantCreateDTO;
 import com.example.FBJV24001115synergy7indbinfoodch6.dto.merchant.MerchantDTO;
+import com.example.FBJV24001115synergy7indbinfoodch6.dto.merchant.MerchantResponseDTO;
 import com.example.FBJV24001115synergy7indbinfoodch6.dto.merchant.MerchantUpdateDTO;
 import com.example.FBJV24001115synergy7indbinfoodch6.models.Merchant;
 import com.example.FBJV24001115synergy7indbinfoodch6.services.MerchatService;
@@ -39,22 +39,27 @@ public class MerchantController {
     @Autowired ModelMapper modelMapper;
 
     @GetMapping()
-    public ResponseEntity<List<MerchantDTO>> showAllMerchant(){
-        List<Merchant> merchants = merchantService.getAllMerchant();
-        List<MerchantDTO> merchantList = merchants
-                .stream()
-                .map(merchant -> modelMapper.map(merchant, MerchantDTO.class))
-                .toList();
-        return new ResponseEntity<>(merchantList, HttpStatus.OK);
+    public ResponseEntity<Map<String, Object>> showAllMerchant(){
+
+        Map<String, Object> response = new HashMap<>();
+        List<MerchantResponseDTO> merchantList = merchantService.getAllMerchant();
+        response.put("status", "success");
+        if (merchantList.isEmpty()) {
+            response.put("data", null);
+            response.put("message", "Merchant is empty");
+        }else{
+            response.put("data", merchantList);
+        }
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @PostMapping("add")
     @PreAuthorize("hasRole('ROLE_MERCHANT')")
-    public ResponseEntity<Map<String, Object>> createMerchant(@RequestBody MerchantCreateDTO merchantCreateDTO){
+    public ResponseEntity<Map<String, Object>> createMerchant(@RequestBody MerchantDTO merchantCreateDTO){
         Map<String, Object> response = new HashMap<>();
 
-        MerchantDTO merchant = merchantService.createMerchant(merchantCreateDTO);
-        response.put("status", "suscces");
+        MerchantResponseDTO merchant = merchantService.createMerchant(merchantCreateDTO);
+        response.put("status", "success");
         response.put("data", merchant);
 
         return new ResponseEntity<>(response, HttpStatus.CREATED);
@@ -65,7 +70,7 @@ public class MerchantController {
     public ResponseEntity<Map<String, Object>> updateMerchant(@PathVariable("id") UUID id, @RequestBody MerchantUpdateDTO merchantUpdateDTO){
         Map<String, Object> response = new HashMap<>();
 
-        MerchantDTO merchant = merchantService.updateMerchant(id, merchantUpdateDTO);
+        MerchantResponseDTO merchant = merchantService.updateMerchant(id, merchantUpdateDTO);
         response.put("status", "suscces");
         response.put("data", merchant);
 
@@ -75,30 +80,38 @@ public class MerchantController {
 
     @DeleteMapping("{id}")
     @PreAuthorize("hasRole('ROLE_MERCHANT')")
-    public ResponseEntity<Void> deleteMerchant(@PathVariable("id") UUID id){
+    public ResponseEntity<String> deleteMerchant(@PathVariable("id") UUID id){
         merchantService.deleteMerchant(id);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return ResponseEntity.ok("Successfully deleted");
     }
 
     @GetMapping("opened")
-    public ResponseEntity<List<MerchantDTO>> showOpenedMerchant(){
-        List<Merchant> merchants = merchantService.getOpenedMerchant();
-        List<MerchantDTO> merchantList = merchants
-                .stream()
-                .map(merchant -> modelMapper.map(merchant, MerchantDTO.class))
-                .toList();
-        return new ResponseEntity<>(merchantList, HttpStatus.OK);
+    public ResponseEntity<Map<String, Object>>  showOpenedMerchant(){
+        Map<String, Object> response = new HashMap<>();
+        List<MerchantResponseDTO> merchantList = merchantService.getOpenedMerchant();
+        response.put("status", "success");
+        if (merchantList.isEmpty()) {
+            response.put("data", null);
+            response.put("message", "Merchant is empty");
+        }else{
+            response.put("data", merchantList);
+        }
+        return new ResponseEntity<>(response, HttpStatus.OK);
 
     }
 
     @GetMapping("closed")
-    public ResponseEntity<List<MerchantDTO>> showClosedMerchant(){
-        List<Merchant> merchants = merchantService.getClosedMerchant();
-        List<MerchantDTO> merchantList = merchants
-                .stream()
-                .map(merchant -> modelMapper.map(merchant, MerchantDTO.class))
-                .toList();
-        return new ResponseEntity<>(merchantList, HttpStatus.OK);
+    public ResponseEntity<Map<String, Object>>  showClosedMerchant(){
+        Map<String, Object> response = new HashMap<>();
+        List<MerchantResponseDTO> merchantList = merchantService.getClosedMerchant();
+        response.put("status", "success");
+        if (merchantList.isEmpty()) {
+            response.put("data", null);
+            response.put("message", "Merchant is empty");
+        }else{
+            response.put("data", merchantList);
+        }
+        return new ResponseEntity<>(response, HttpStatus.OK);
 
     }
 
@@ -107,7 +120,7 @@ public class MerchantController {
     public ResponseEntity<Map<String, Object>> switchMerchant(@PathVariable("id") UUID id){
 
         Map<String, Object> response = new HashMap<>();
-        MerchantDTO merchant = merchantService.switchMerchant(id);
+        MerchantResponseDTO merchant = merchantService.switchMerchant(id);
         response.put("status", "suscces");
         response.put("data", merchant);
 
@@ -116,8 +129,8 @@ public class MerchantController {
 
 
     @GetMapping("by-id/{id}")
-    public ResponseEntity<MerchantDTO> getMerchantById(@PathVariable("id") UUID id){
-        MerchantDTO merchant =  merchantService.getMerchantById(id);
+    public ResponseEntity<MerchantResponseDTO> getMerchantById(@PathVariable("id") UUID id){
+        MerchantResponseDTO merchant =  merchantService.getMerchantById(id);
         return new ResponseEntity<>(merchant, HttpStatus.OK);
     }
 

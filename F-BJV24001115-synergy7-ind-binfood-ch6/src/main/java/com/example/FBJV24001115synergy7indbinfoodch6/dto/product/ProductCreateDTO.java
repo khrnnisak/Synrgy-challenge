@@ -12,6 +12,7 @@ public class ProductCreateDTO {
 
     private String name;
     private Double price;
+    private int stock;
     private CategoryProduct category;
-    private UUID merchant_id;
+    private UUID merchantId;
 }

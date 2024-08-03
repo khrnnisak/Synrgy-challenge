@@ -1,18 +1,29 @@
 package com.example.FBJV24001115synergy7indbinfoodch6.services;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
+import com.example.FBJV24001115synergy7indbinfoodch6.dto.orderDetail.OrderDetailCreateDTO;
 import com.example.FBJV24001115synergy7indbinfoodch6.dto.orderDetail.OrderDetailDTO;
+import com.example.FBJV24001115synergy7indbinfoodch6.dto.orderDetail.OrderDetailFieldDTO;
+import com.example.FBJV24001115synergy7indbinfoodch6.dto.orderDetail.OrderDetailReportDTO;
 import com.example.FBJV24001115synergy7indbinfoodch6.dto.orderDetail.OrderDetailUpdateDTO;
+import com.example.FBJV24001115synergy7indbinfoodch6.mapper.OrderMapper;
+import com.example.FBJV24001115synergy7indbinfoodch6.mapper.ProductMapper;
 import com.example.FBJV24001115synergy7indbinfoodch6.models.Order;
 import com.example.FBJV24001115synergy7indbinfoodch6.models.OrderDetail;
 import com.example.FBJV24001115synergy7indbinfoodch6.models.Product;
 import com.example.FBJV24001115synergy7indbinfoodch6.repositories.OrderDetailRepository;
+import com.example.FBJV24001115synergy7indbinfoodch6.repositories.OrderRepository;
+import com.example.FBJV24001115synergy7indbinfoodch6.repositories.ProductRepository;
 import com.example.FBJV24001115synergy7indbinfoodch6.utils.AdditionalUtil;
 import com.example.FBJV24001115synergy7indbinfoodch6.utils.FormatMessageUtil;
 
@@ -27,18 +38,19 @@ public class OrderDetailServiceImpl implements OrderDetailService{
 
     @Autowired OrderDetailRepository orderDetailRepository;
     @Autowired ModelMapper modelMapper;
+    @Autowired OrderRepository orderRepository;
+    @Autowired ProductRepository productRepository;
+    @Autowired OrderMapper orderMapper;
+    @Autowired ProductMapper productMapper;
 
-    @Override
-    public List<OrderDetail> getOrderDetail() {
-        return orderDetailRepository.findAll();
-    }
 
     @Override
     public String getListToString(Order order) {
         StringBuilder receipt = new StringBuilder();
-        for (OrderDetail orderDetail : getOrderDetailByOrder(order)) {
-            Product item = orderDetail.getProduct();
-            double subTotal = orderDetail.getTotal_price();
+        for (OrderDetail orderDetail : orderDetailRepository.findByOrder(order)) {
+            OrderDetail oDetail = orderDetailRepository.findByOrderId(orderDetail.getId());
+            Product item = oDetail.getProduct();
+            double subTotal = orderDetail.getTotalPrice();
             receipt.append(item.getName())
                     .append("\t\t")
                     .append(orderDetail.getQuantity())
@@ -62,14 +74,14 @@ public class OrderDetailServiceImpl implements OrderDetailService{
     }
     @Override
     public double getTotal(Order order) {
-        return getOrderDetailByOrder(order).stream()
-        .mapToDouble(OrderDetail::getTotal_price)
+        return orderDetailRepository.findByOrder(order).stream()
+        .mapToDouble(OrderDetail::getTotalPrice)
         .sum();
     }
 
     @Override
     public int getTotalqty(Order order) {
-        return getOrderDetailByOrder(order).stream()
+        return orderDetailRepository.findByOrder(order).stream()
             .mapToInt(OrderDetail::getQuantity)
             .sum();
     }
@@ -90,91 +102,135 @@ public class OrderDetailServiceImpl implements OrderDetailService{
     }
 
     @Override
-    public OrderDetailDTO create(OrderDetail orderDetail) {
+    public List<OrderDetailDTO> getOrderDetail(UUID userId) {
+        List<OrderDetail> orderDetails = orderDetailRepository.findByUserId(userId);
+        List<OrderDetailDTO> orderDetailList = orderDetails
+            .stream()
+            .map(order -> orderMapper.tOrderDetailDTO(order, 
+                orderMapper.toOrderResponse(order.getOrder()), 
+                productMapper.toProductResponse(order.getProduct())))
+            .collect(Collectors.toList());
+        return orderDetailList;
+    }
+
+    @Override
+    public OrderDetailDTO create(OrderDetailCreateDTO orderDetailCreateDTO) {
         try {
-            Optional<OrderDetail> opt_order = Optional.ofNullable(orderDetail);
-            if (!opt_order.isPresent()) {
-                throw new NullPointerException(); 
-            }
-            Optional<OrderDetail> getOrder = Optional.ofNullable(orderDetailRepository.findByOrderAndProduct(orderDetail.getOrder(), orderDetail.getProduct()));
+            Order order = orderRepository.findById(orderDetailCreateDTO.getOrderId())
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Order not found"));
+            
+            Product product = productRepository.findById(orderDetailCreateDTO.getProductId())
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Product not found"));
+
+            
+
+            Optional<OrderDetail> getOrder = Optional
+                .ofNullable(orderDetailRepository
+                    .findByOrderAndProduct(order, product));
+
             if (getOrder.isPresent()) {
-                log.error(FormatMessageUtil.errorMessageFormat("Pesanan Sudah tersedia, ubah untuk memperbarui pesanan"));
+                log.error(FormatMessageUtil.errorMessageFormat("Pesanan Sudah tersedia, ubah untuk memperbarui pesanan atau buat pesanan baru"));
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Pesanan Sudah tersedia, ubah untuk memperbarui pesanan");
             } else {
+                OrderDetail orderDetail = OrderDetail.builder()
+                    .order(order)
+                    .product(product)
+                    .quantity(orderDetailCreateDTO.getQuantity())
+                    .totalPrice(product.getPrice() * orderDetailCreateDTO.getQuantity())
+                    .build();
                 orderDetailRepository.save(orderDetail);
+                orderDetail.setId(orderDetail.getId());
                 log.info(FormatMessageUtil.succesToAddMessage());
-                return modelMapper.map(getOrder, OrderDetailDTO.class);
+                return orderMapper.tOrderDetailDTO(orderDetail, orderMapper.toOrderResponse(order), productMapper.toProductResponse(product));
             }
+        } 
+        catch (ResponseStatusException e) {
+            throw e; 
         } catch (Exception e) {
-            log.error(FormatMessageUtil.failedToAddMessage());
-        }
-        return null;
+            log.error(FormatMessageUtil.failedToEditMessage() + e);
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "An unexpected error occurred", e);
+        } 
     }
 
     @Override
     public void delete(UUID id) {
         try {
-            Optional<OrderDetail> orderDetail = orderDetailRepository.findById(id);
-            if (!orderDetail.isPresent()) {
-                log.error(FormatMessageUtil.notFoundMessage());
-            } else {
-                OrderDetail choosenOrderDetail = orderDetail.get();
-                orderDetailRepository.delete(choosenOrderDetail);
-                log.info(FormatMessageUtil.succesToDeleteMessage());
-            }
+            OrderDetail orderDetail = orderDetailRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Order detail not found"));
+
+            orderDetailRepository.delete(orderDetail);
+            log.info(FormatMessageUtil.succesToDeleteMessage());
+        
+        } 
+        catch (ResponseStatusException e) {
+            throw e; 
         } catch (Exception e) {
-            log.error(FormatMessageUtil.failedToDeleteMessage());
-        }
+            log.error(FormatMessageUtil.failedToEditMessage() + e);
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "An unexpected error occurred", e);
+        } 
     }
 
     @Override
     public OrderDetailDTO update(UUID id, OrderDetailUpdateDTO orderDetailUpdateDTO) {
         try {
-            Optional<OrderDetail> orderDetail = orderDetailRepository.findById(id);
-            if (!orderDetail.isPresent()) {
-                log.error(FormatMessageUtil.notFoundMessage());
-            } else {
-                OrderDetail choosenOrderDetail = orderDetail.get();
-                choosenOrderDetail.setQuantity(orderDetailUpdateDTO.getQuantity());
-                choosenOrderDetail.setTotal_price(orderDetailUpdateDTO.getTotal_price());
-                orderDetailRepository.save(choosenOrderDetail);
-                log.info(FormatMessageUtil.succesToEditMessage());
-                return modelMapper.map(choosenOrderDetail, OrderDetailDTO.class);
+            OrderDetail orderDetail = orderDetailRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Order detail not found"));
 
-            }
+            orderDetail.setQuantity(orderDetailUpdateDTO.getQuantity());
+            orderDetail.setTotalPrice(orderDetail.getProduct().getPrice() * orderDetailUpdateDTO.getQuantity());
+            orderDetailRepository.save(orderDetail);
+            log.info(FormatMessageUtil.succesToEditMessage());
+            return orderMapper.tOrderDetailDTO(orderDetail, orderMapper.toOrderResponse(orderDetail.getOrder()), productMapper.toProductResponse(orderDetail.getProduct()));
+        } 
+        catch (ResponseStatusException e) {
+            throw e; 
         } catch (Exception e) {
-            log.error(FormatMessageUtil.failedToEditMessage());
+            log.error(FormatMessageUtil.failedToEditMessage() + e);
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "An unexpected error occurred", e);
         }
-        return null;
     }
 
     @Override
-    public List<OrderDetail> getOrderDetailByOrder(Order order) {
-        Optional<Order> opt = Optional.ofNullable(order);
-        if (!opt.isPresent()) {
-            System.out.println(FormatMessageUtil.errorMessageFormat("Kesalahan saat menambahkan Pesanan"));
+    public OrderDetailReportDTO getOrderDetailByOrder(UUID orderId) {
+        try {
+            Order existOrder = orderRepository.findById(orderId)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Order not found"));
+            List<OrderDetail> orderDetails = orderDetailRepository.findByOrder(existOrder);
+            List<OrderDetailFieldDTO> orderDetailList = orderDetails
+                .stream()
+                .map(order -> orderMapper.toField(order))
+                .collect(Collectors.toList());
+
+            return OrderDetailReportDTO.builder()
+                .user(existOrder.getUser().getId())
+                .destination(existOrder.getDestination())
+                .date(LocalDateTime.now())
+                .orders(orderDetailList)
+                .totalQty(getTotalqty(existOrder))
+                .total(getTotal(existOrder))
+                .payment("Binarpay")
+                .build();
+        } catch (ResponseStatusException e) {
+            throw e; 
+        } catch (Exception e) {
+            log.error(FormatMessageUtil.failedToEditMessage() + e);
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "An unexpected error occurred", e);
         }
-        List<OrderDetail> orderDetails = orderDetailRepository.findByOrder(order);
-        return orderDetails;
     }
 
     @Override
     public OrderDetailDTO getOrderDetailById(UUID id) {
        try {
-            Optional<UUID> opt = Optional.ofNullable(id);
-            if (!opt.isPresent()) {
-               log.error(FormatMessageUtil.errorMessageFormat("Masukan tidak boleh kosong"));
-            }
-            Optional<OrderDetail> existOrderDetail = orderDetailRepository.findById(id);
-            if (!existOrderDetail.isPresent()) {
-                log.error(FormatMessageUtil.notFoundMessage());
-            }else{
-                OrderDetail orderDetail = existOrderDetail.get();
-                return modelMapper.map(orderDetail, OrderDetailDTO.class);
-            }
+            OrderDetail orderDetail = orderDetailRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Order detail not found"));
+            return orderMapper.tOrderDetailDTO(orderDetail, orderMapper.toOrderResponse(orderDetail.getOrder()), productMapper.toProductResponse(orderDetail.getProduct()));
+        } 
+        catch (ResponseStatusException e) {
+            throw e; 
         } catch (Exception e) {
-            log.error(FormatMessageUtil.notFoundMessage());
-        }
-        return null;
+            log.error(FormatMessageUtil.failedToEditMessage() + e);
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "An unexpected error occurred", e);
+        } 
     }
 
 }

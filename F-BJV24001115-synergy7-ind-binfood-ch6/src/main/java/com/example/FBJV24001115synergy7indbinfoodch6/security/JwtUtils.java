@@ -5,6 +5,8 @@ import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.oauth2.core.oidc.user.OidcUser;
+import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
 import org.springframework.stereotype.Component;
 
 import io.jsonwebtoken.Jwts;
@@ -23,12 +25,19 @@ public class JwtUtils {
     
     
     public String generateToken(Authentication authentication) {
+        String username;
+        if (authentication.getPrincipal() instanceof UserDetailsImpl userPrincipal) {
+            username = userPrincipal.getUsername();
+        }else if (authentication.getPrincipal() instanceof OidcUser oidcUser) {
+            username = oidcUser.getEmail();
+        }else if (authentication.getPrincipal() instanceof DefaultOAuth2User defaultOAuth2User) {
+            username = defaultOAuth2User.getAttribute("login");
+        }else{
+            throw new IllegalArgumentException("Unsupported principal type");
+        }
         Date now = new Date();
-
-        UserDetailsImpl userPrincipal = (UserDetailsImpl) authentication.getPrincipal();
-
         return Jwts.builder()
-                .setSubject(userPrincipal.getUsername())
+                .setSubject(username)
                 .setIssuedAt(now)
                 .setExpiration(new Date(now.getTime()+jwtExpiration))
                 .signWith(key(), SignatureAlgorithm.HS256)

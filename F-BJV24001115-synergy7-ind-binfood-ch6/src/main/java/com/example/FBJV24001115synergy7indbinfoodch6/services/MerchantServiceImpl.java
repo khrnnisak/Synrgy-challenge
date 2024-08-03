@@ -3,15 +3,18 @@ package com.example.FBJV24001115synergy7indbinfoodch6.services;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
-
+import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
-import com.example.FBJV24001115synergy7indbinfoodch6.dto.merchant.MerchantCreateDTO;
 import com.example.FBJV24001115synergy7indbinfoodch6.dto.merchant.MerchantDTO;
+import com.example.FBJV24001115synergy7indbinfoodch6.dto.merchant.MerchantResponseDTO;
 import com.example.FBJV24001115synergy7indbinfoodch6.dto.merchant.MerchantUpdateDTO;
+import com.example.FBJV24001115synergy7indbinfoodch6.mapper.MerchantMapper;
 import com.example.FBJV24001115synergy7indbinfoodch6.models.Merchant;
 import com.example.FBJV24001115synergy7indbinfoodch6.repositories.MerchantRepository;
 import com.example.FBJV24001115synergy7indbinfoodch6.utils.FormatMessageUtil;
@@ -24,123 +27,134 @@ import lombok.extern.slf4j.Slf4j;
 public class MerchantServiceImpl implements MerchatService{
     @Autowired MerchantRepository merchantRepository;
     @Autowired ModelMapper modelMapper;
+    @Autowired MerchantMapper merchantMapper;
 
     @Override
-    public MerchantDTO createMerchant(MerchantCreateDTO merchantCreateDTO) {
+    public MerchantResponseDTO createMerchant(MerchantDTO merchantCreateDTO) {
         try {
-            Optional<Merchant> existMerchant = Optional.ofNullable(merchantRepository.findByNameAndLocation(merchantCreateDTO.getName().toLowerCase(), merchantCreateDTO.getLocation().toLowerCase()));
+            Optional<Merchant> existMerchant = Optional
+                .ofNullable(merchantRepository
+                    .findByNameAndLocation(merchantCreateDTO.getName().toLowerCase(), 
+                            merchantCreateDTO.getLocation().toLowerCase()));
             if (existMerchant.isPresent()) {
                 log.error(FormatMessageUtil.duplicateMessage());
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Merchant Already Exist");
             }else{
                 Merchant merchant = Merchant.builder()
                         .name(merchantCreateDTO.getName().toLowerCase())
                         .location(merchantCreateDTO.getLocation().toLowerCase())
                         .build();
                 merchantRepository.save(merchant);
+                merchant.setId(merchant.getId());
                 log.info(FormatMessageUtil.succesToAddMessage());
-                return modelMapper.map(existMerchant.get(), MerchantDTO.class);
+                return merchantMapper.toMerchantResponseDTO(merchant);
             }
+        }catch (ResponseStatusException e) {
+            throw e; 
         } catch (Exception e) {
-           log.error(FormatMessageUtil.failedToAddMessage());
-        }   
-        return null;     
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "An unexpected error occurred", e);
+        } 
     }
 
     @Override
-    public MerchantDTO updateMerchant(UUID id, MerchantUpdateDTO merchantUpdateDTO) {
+    public MerchantResponseDTO updateMerchant(UUID id, MerchantUpdateDTO merchantUpdateDTO) {
         try {
-            Optional<Merchant> existMerchant = merchantRepository.findById(id);
-            if (!existMerchant.isPresent()) {
-               log.error(FormatMessageUtil.notFoundMessage());
-            }else{
-                Merchant choosenMerchant = existMerchant.get();
-                choosenMerchant.setName(merchantUpdateDTO.getName());
-                choosenMerchant.setLocation(merchantUpdateDTO.getLocation());
-                merchantRepository.save(choosenMerchant);
-                log.info(FormatMessageUtil.succesToEditMessage());
-                return modelMapper.map(choosenMerchant, MerchantDTO.class);
-            }
+            Merchant existMerchant = merchantRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Merchant not found"));
+            existMerchant.setName(merchantUpdateDTO.getName());
+            existMerchant.setLocation(merchantUpdateDTO.getLocation());
+            merchantRepository.save(existMerchant);
+            log.info(FormatMessageUtil.succesToEditMessage());
+            return merchantMapper.toMerchantResponseDTO(existMerchant);
+        }
+        catch (ResponseStatusException e) {
+            throw e; 
         } catch (Exception e) {
             log.error(FormatMessageUtil.failedToEditMessage() + e);
-        }   
-        return null;
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "An unexpected error occurred", e);
+        } 
     }
 
     @Override
     public void deleteMerchant(UUID id) {
         try {
-            Optional<Merchant> existMerchant = merchantRepository.findById(id);
-            if (!existMerchant.isPresent()) {
-                log.error(FormatMessageUtil.notFoundMessage());
-            }else{
-                Merchant choosenMerchant = existMerchant.get();
-                merchantRepository.delete(choosenMerchant);
-                log.info(FormatMessageUtil.succesToDeleteMessage());
-            }
+            Merchant existMerchant = merchantRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Merchant not found"));
+            merchantRepository.delete(existMerchant);
+            log.info(FormatMessageUtil.succesToDeleteMessage());
+        }catch (ResponseStatusException e) {
+            throw e; 
         } catch (Exception e) {
-            log.error(FormatMessageUtil.failedToDeleteMessage());
-        }  
+            log.error(FormatMessageUtil.failedToDeleteMessage() + e);
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "An unexpected error occurred", e);
+        } 
        
     }
 
     @Override
-    public List<Merchant> getAllMerchant() {
-        return merchantRepository.findAll();
+    public List<MerchantResponseDTO> getAllMerchant() {
+        List<Merchant> merchants = merchantRepository.findAll();
+        List<MerchantResponseDTO> merchantList = merchants
+                .stream()
+                .map(merchant -> merchantMapper.toMerchantResponseDTO(merchant))
+                .collect(Collectors.toList());
+        return merchantList;
     }
 
     @Override
-    public List<Merchant> getOpenedMerchant() {
-        return merchantRepository.findOpenedMerchant();
+    public List<MerchantResponseDTO> getOpenedMerchant() {
+        List<Merchant> merchants = merchantRepository.findOpenedMerchant();
+        List<MerchantResponseDTO> merchantList = merchants
+                .stream()
+                .map(merchant -> merchantMapper.toMerchantResponseDTO(merchant))
+                .collect(Collectors.toList());
+        return merchantList;
     }
 
     @Override
-    public List<Merchant> getClosedMerchant() {
-        return merchantRepository.findClosedMerchant();
+    public List<MerchantResponseDTO> getClosedMerchant() {
+        List<Merchant> merchants = merchantRepository.findClosedMerchant();
+        List<MerchantResponseDTO> merchantList = merchants
+                .stream()
+                .map(merchant -> merchantMapper.toMerchantResponseDTO(merchant))
+                .collect(Collectors.toList());
+        return merchantList;
     }
 
     @Override
-    public MerchantDTO switchMerchant(UUID id) {
+    public MerchantResponseDTO switchMerchant(UUID id) {
         try {
-            Optional<Merchant> existMerchant = merchantRepository.findById(id);
-            if (!existMerchant.isPresent()) {
-                log.error(FormatMessageUtil.notFoundMessage());
+            Merchant existMerchant = merchantRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Merchant not found"));
+            if (Boolean.TRUE.equals(existMerchant.isOpened())) {
+                existMerchant.setOpened(Boolean.FALSE);
             }else{
-
-                Merchant merchant = existMerchant.get();
-                if (Boolean.TRUE.equals(merchant.is_opened())) {
-                    merchant.set_opened(Boolean.FALSE);
-                }else{
-                    merchant.set_opened(Boolean.TRUE);
-                }
-                merchantRepository.save(merchant);
-                log.info(FormatMessageUtil.succesToEditMessage());
-                return modelMapper.map(merchant, MerchantDTO.class);
+                existMerchant.setOpened(Boolean.TRUE);
             }
+            merchantRepository.save(existMerchant);
+            log.info(FormatMessageUtil.succesToEditMessage());
+            return merchantMapper.toMerchantResponseDTO(existMerchant);
+        }catch (ResponseStatusException e) {
+            throw e; 
         } catch (Exception e) {
-            log.error(FormatMessageUtil.failedToEditMessage());
+            log.error(FormatMessageUtil.failedToEditMessage() + e);
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "An unexpected error occurred", e);
         }
-        return null;
     }
-
     @Override
-    public MerchantDTO getMerchantById(UUID id) {
+    public MerchantResponseDTO getMerchantById(UUID id) {
         try {
-            Optional<UUID> merOptional = Optional.ofNullable(id);
-            if (!merOptional.isPresent()) {
-               log.error(FormatMessageUtil.errorMessageFormat("Masukan tidak boleh kosong"));
-            }
-            Optional<Merchant> existMerchant = merchantRepository.findById(id);
-            if (!existMerchant.isPresent()) {
-                log.error(FormatMessageUtil.notFoundMessage());
-            }else{
-                Merchant merchant = existMerchant.get();
-                return modelMapper.map(merchant, MerchantDTO.class);
-            }
+            Merchant existMerchant = merchantRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Merchant not found"));
+            return merchantMapper.toMerchantResponseDTO(existMerchant);
+            
+        } catch (ResponseStatusException e) {
+            throw e; 
         } catch (Exception e) {
-            log.error(FormatMessageUtil.notFoundMessage());
+            log.error(FormatMessageUtil.failedToEditMessage() + e);
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "An unexpected error occurred", e);
         }
-        return null;
     }
-
+    
     
 }

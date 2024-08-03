@@ -12,11 +12,11 @@ import com.example.FBJV24001115synergy7indbinfoodch6.models.accounts.User;
 
 public interface UserService {
 
-    UserDTO createUser(RegisterRequestDTO registerRequestDTO);
     UserDTO updateUser(UUID id, UserUpdateDTO userUpdateDTO);
     void deleteUser(UUID id);
     List<User> getAllUsers();
     UserDTO getUserById(UUID id);
     Optional<User> isUserExist(String username, String email);
+    User createUserPostLogin(String name, String email);
 
 }

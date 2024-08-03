@@ -10,6 +10,6 @@ import lombok.Data;
 @Data
 public class OrderDetailCreateDTO {
     private Integer quantity;
-    private UUID order_id;
-    private UUID product_id;
+    private UUID orderId;
+    private UUID productId;
 }

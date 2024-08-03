@@ -6,5 +6,5 @@ import lombok.Data;
 public class MerchantUpdateDTO {
     private String name;
     private String location;
-    private boolean is_opened;
+    private boolean opened;
 }

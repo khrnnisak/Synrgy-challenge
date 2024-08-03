@@ -1,18 +1,22 @@
 package com.example.FBJV24001115synergy7indbinfoodch6.dto.orderDetail;
 
 
-import java.time.LocalDate;
-import java.util.List;
 
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.UUID;
+
+import lombok.Builder;
 import lombok.Data;
 
 @Data
+@Builder
 public class OrderDetailReportDTO {
-    private String user;
+    private UUID user;
     private String destination;
     private Double total;
-    private LocalDate date;
+    private LocalDateTime date;
     private String payment;
-    private Integer total_qty;
-    private List<OrderDetailDTO> orders;
+    private Integer totalQty;
+    private List<OrderDetailFieldDTO> orders;
 }

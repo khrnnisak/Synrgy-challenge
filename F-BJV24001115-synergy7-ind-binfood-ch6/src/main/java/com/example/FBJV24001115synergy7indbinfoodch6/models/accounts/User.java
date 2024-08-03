@@ -29,8 +29,9 @@ public class User extends BaseModel{
     private UUID id;
 
     private String username;
-    private String email_addres;
+    private String emailAddress;
     private String password;
+    private boolean verified = false;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Order> orders;
