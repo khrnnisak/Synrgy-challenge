@@ -602,3 +602,152 @@
 2024-08-04 08:58:32,105 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
 2024-08-04 08:58:32,110 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
 2024-08-04 08:58:32,158 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2024-08-04 09:39:43,945 INFO o.s.b.StartupInfoLogger [main] Starting FBjv24001115Synergy7IndBinfoodCh8Application using Java 21.0.2 with PID 24512 (E:\Kumpulankoding\java\Synrgy-challenge\F-BJV24001115-synergy7-ind-binfood-ch8\target\classes started by USER in E:\Kumpulankoding\java\Synrgy-challenge\F-BJV24001115-synergy7-ind-binfood-ch8)
+2024-08-04 09:39:43,955 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2024-08-04 09:39:49,778 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-04 09:39:50,112 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 307 ms. Found 7 JPA repository interfaces.
+2024-08-04 09:39:52,713 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port 8081 (http)
+2024-08-04 09:39:52,744 INFO o.a.j.l.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8081"]
+2024-08-04 09:39:52,772 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2024-08-04 09:39:52,773 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-08-04 09:39:53,152 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2024-08-04 09:39:53,152 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 8910 ms
+2024-08-04 09:39:53,680 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-08-04 09:39:54,323 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-08-04 09:39:54,562 INFO o.h.c.i.RegionFactoryInitiator [main] HHH000026: Second-level cache disabled
+2024-08-04 09:39:55,631 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-04 09:39:55,798 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2024-08-04 09:39:56,494 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@62ab5e63
+2024-08-04 09:39:56,510 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2024-08-04 09:39:56,692 WARN o.h.e.j.d.i.DialectFactoryImpl [main] HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-08-04 09:40:00,848 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-08-04 09:40:01,175 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-04 09:40:02,304 INFO o.s.d.j.r.q.QueryEnhancerFactory [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-08-04 09:40:03,822 INFO c.e.F.s.FCMInitializer [main] Firebase application initialized
+2024-08-04 09:40:03,893 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-08-04 09:40:05,246 INFO o.s.s.w.DefaultSecurityFilterChain [main] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@48a32c4f, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@25af2afe, org.springframework.security.web.context.SecurityContextHolderFilter@7ab20a7, org.springframework.security.web.header.HeaderWriterFilter@7e729046, org.springframework.web.filter.CorsFilter@21a1554, org.springframework.security.web.authentication.logout.LogoutFilter@27f6854b, org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter@6f13ed1, org.springframework.security.oauth2.client.web.OAuth2LoginAuthenticationFilter@7053b64b, com.example.FBJV24001115synergy7indbinfoodch8.security.JwtAuthTokenFilter@2e17a9e6, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@556a5e70, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@64ee9290, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@17e7cc67, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@f359e65, org.springframework.security.web.access.ExceptionTranslationFilter@428440f2, org.springframework.security.web.access.intercept.AuthorizationFilter@7b06dce0]
+2024-08-04 09:40:06,190 INFO o.a.j.l.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8081"]
+2024-08-04 09:40:06,313 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port 8081 (http) with context path ''
+2024-08-04 09:40:06,380 INFO o.s.b.StartupInfoLogger [main] Started FBjv24001115Synergy7IndBinfoodCh8Application in 25.013 seconds (process running for 27.547)
+2024-08-04 09:40:09,745 INFO c.e.F.s.FCMService [scheduling-1] Sent message to token. Device token: cMUIk9-hccUxbA-Uznl7LC:APA91bHdARuGyr517ZpGZjt8QsKVKP-zzl3-wKpOsTsvA8pTBvrXdaFJmeBhrQBpCixs5O3bo6nZ-o8U74khj1kf8ZjxyHbugfngNuhmsd6Nhs3xVja23IAlmliOwQYIR9TmS2fXIkV3, projects/binarfud-kh/messages/2933e42a-00c4-422c-8f72-ebf8d959692c msg {
+  "notification": {
+    "title": "Promo Siang Binarfud",
+    "body": "Silakan order pada Pukul 12.00 - 13.00 untuk mendapatakan diskon 20%"
+  },
+  "androidConfig": {
+    "priority": "high",
+    "ttl": "120s",
+    "notification": {}
+  },
+  "apnsConfig": {
+    "payload": {
+      "aps": {}
+    }
+  },
+  "token": "cMUIk9-hccUxbA-Uznl7LC:APA91bHdARuGyr517ZpGZjt8QsKVKP-zzl3-wKpOsTsvA8pTBvrXdaFJmeBhrQBpCixs5O3bo6nZ-o8U74khj1kf8ZjxyHbugfngNuhmsd6Nhs3xVja23IAlmliOwQYIR9TmS2fXIkV3"
+}
+2024-08-04 09:40:10,154 INFO c.e.F.s.FCMService [scheduling-1] Sent message to token. Device token: cMUIk9-hccUxbA-Uznl7LC:APA91bHdARuGyr517ZpGZjt8QsKVKP-zzl3-wKpOsTsvA8pTBvrXdaFJmeBhrQBpCixs5O3bo6nZ-o8U74khj1kf8ZjxyHbugfngNuhmsd6Nhs3xVja23IAlmliOwQYIR9TmS2fXIkV3, projects/binarfud-kh/messages/e174850e-cb6e-4a58-9501-0f49cfdb9aca msg {
+  "notification": {
+    "title": "Promo Siang Binarfud",
+    "body": "Silakan order pada Pukul 12.00 - 13.00 untuk mendapatakan diskon 20%"
+  },
+  "androidConfig": {
+    "priority": "high",
+    "ttl": "120s",
+    "notification": {}
+  },
+  "apnsConfig": {
+    "payload": {
+      "aps": {}
+    }
+  },
+  "token": "cMUIk9-hccUxbA-Uznl7LC:APA91bHdARuGyr517ZpGZjt8QsKVKP-zzl3-wKpOsTsvA8pTBvrXdaFJmeBhrQBpCixs5O3bo6nZ-o8U74khj1kf8ZjxyHbugfngNuhmsd6Nhs3xVja23IAlmliOwQYIR9TmS2fXIkV3"
+}
+2024-08-04 09:40:12,190 INFO c.e.F.s.FCMService [scheduling-1] Sent message to token. Device token: cMUIk9-hccUxbA-Uznl7LC:APA91bHdARuGyr517ZpGZjt8QsKVKP-zzl3-wKpOsTsvA8pTBvrXdaFJmeBhrQBpCixs5O3bo6nZ-o8U74khj1kf8ZjxyHbugfngNuhmsd6Nhs3xVja23IAlmliOwQYIR9TmS2fXIkV3, projects/binarfud-kh/messages/0e1beddc-0f81-4d1e-9a14-7e3f2cc2cde4 msg {
+  "notification": {
+    "title": "Promo Siang Binarfud",
+    "body": "Silakan order pada Pukul 12.00 - 13.00 untuk mendapatakan diskon 20%"
+  },
+  "androidConfig": {
+    "priority": "high",
+    "ttl": "120s",
+    "notification": {}
+  },
+  "apnsConfig": {
+    "payload": {
+      "aps": {}
+    }
+  },
+  "token": "cMUIk9-hccUxbA-Uznl7LC:APA91bHdARuGyr517ZpGZjt8QsKVKP-zzl3-wKpOsTsvA8pTBvrXdaFJmeBhrQBpCixs5O3bo6nZ-o8U74khj1kf8ZjxyHbugfngNuhmsd6Nhs3xVja23IAlmliOwQYIR9TmS2fXIkV3"
+}
+2024-08-04 09:40:14,165 INFO c.e.F.s.FCMService [scheduling-1] Sent message to token. Device token: cMUIk9-hccUxbA-Uznl7LC:APA91bHdARuGyr517ZpGZjt8QsKVKP-zzl3-wKpOsTsvA8pTBvrXdaFJmeBhrQBpCixs5O3bo6nZ-o8U74khj1kf8ZjxyHbugfngNuhmsd6Nhs3xVja23IAlmliOwQYIR9TmS2fXIkV3, projects/binarfud-kh/messages/4a7ebbd6-aca2-4162-91f4-f8fbdce41c85 msg {
+  "notification": {
+    "title": "Promo Siang Binarfud",
+    "body": "Silakan order pada Pukul 12.00 - 13.00 untuk mendapatakan diskon 20%"
+  },
+  "androidConfig": {
+    "priority": "high",
+    "ttl": "120s",
+    "notification": {}
+  },
+  "apnsConfig": {
+    "payload": {
+      "aps": {}
+    }
+  },
+  "token": "cMUIk9-hccUxbA-Uznl7LC:APA91bHdARuGyr517ZpGZjt8QsKVKP-zzl3-wKpOsTsvA8pTBvrXdaFJmeBhrQBpCixs5O3bo6nZ-o8U74khj1kf8ZjxyHbugfngNuhmsd6Nhs3xVja23IAlmliOwQYIR9TmS2fXIkV3"
+}
+2024-08-04 09:40:16,184 INFO c.e.F.s.FCMService [scheduling-1] Sent message to token. Device token: cMUIk9-hccUxbA-Uznl7LC:APA91bHdARuGyr517ZpGZjt8QsKVKP-zzl3-wKpOsTsvA8pTBvrXdaFJmeBhrQBpCixs5O3bo6nZ-o8U74khj1kf8ZjxyHbugfngNuhmsd6Nhs3xVja23IAlmliOwQYIR9TmS2fXIkV3, projects/binarfud-kh/messages/628a5879-a2c6-42fd-8452-bdee55ec27c1 msg {
+  "notification": {
+    "title": "Promo Siang Binarfud",
+    "body": "Silakan order pada Pukul 12.00 - 13.00 untuk mendapatakan diskon 20%"
+  },
+  "androidConfig": {
+    "priority": "high",
+    "ttl": "120s",
+    "notification": {}
+  },
+  "apnsConfig": {
+    "payload": {
+      "aps": {}
+    }
+  },
+  "token": "cMUIk9-hccUxbA-Uznl7LC:APA91bHdARuGyr517ZpGZjt8QsKVKP-zzl3-wKpOsTsvA8pTBvrXdaFJmeBhrQBpCixs5O3bo6nZ-o8U74khj1kf8ZjxyHbugfngNuhmsd6Nhs3xVja23IAlmliOwQYIR9TmS2fXIkV3"
+}
+2024-08-04 09:40:18,138 INFO c.e.F.s.FCMService [scheduling-1] Sent message to token. Device token: cMUIk9-hccUxbA-Uznl7LC:APA91bHdARuGyr517ZpGZjt8QsKVKP-zzl3-wKpOsTsvA8pTBvrXdaFJmeBhrQBpCixs5O3bo6nZ-o8U74khj1kf8ZjxyHbugfngNuhmsd6Nhs3xVja23IAlmliOwQYIR9TmS2fXIkV3, projects/binarfud-kh/messages/940970c0-cd36-4ebc-b7fb-eaddcf2eea23 msg {
+  "notification": {
+    "title": "Promo Siang Binarfud",
+    "body": "Silakan order pada Pukul 12.00 - 13.00 untuk mendapatakan diskon 20%"
+  },
+  "androidConfig": {
+    "priority": "high",
+    "ttl": "120s",
+    "notification": {}
+  },
+  "apnsConfig": {
+    "payload": {
+      "aps": {}
+    }
+  },
+  "token": "cMUIk9-hccUxbA-Uznl7LC:APA91bHdARuGyr517ZpGZjt8QsKVKP-zzl3-wKpOsTsvA8pTBvrXdaFJmeBhrQBpCixs5O3bo6nZ-o8U74khj1kf8ZjxyHbugfngNuhmsd6Nhs3xVja23IAlmliOwQYIR9TmS2fXIkV3"
+}
+2024-08-04 09:40:20,185 INFO c.e.F.s.FCMService [scheduling-1] Sent message to token. Device token: cMUIk9-hccUxbA-Uznl7LC:APA91bHdARuGyr517ZpGZjt8QsKVKP-zzl3-wKpOsTsvA8pTBvrXdaFJmeBhrQBpCixs5O3bo6nZ-o8U74khj1kf8ZjxyHbugfngNuhmsd6Nhs3xVja23IAlmliOwQYIR9TmS2fXIkV3, projects/binarfud-kh/messages/d81445c5-c465-40d3-b8ff-dbd583a6064e msg {
+  "notification": {
+    "title": "Promo Siang Binarfud",
+    "body": "Silakan order pada Pukul 12.00 - 13.00 untuk mendapatakan diskon 20%"
+  },
+  "androidConfig": {
+    "priority": "high",
+    "ttl": "120s",
+    "notification": {}
+  },
+  "apnsConfig": {
+    "payload": {
+      "aps": {}
+    }
+  },
+  "token": "cMUIk9-hccUxbA-Uznl7LC:APA91bHdARuGyr517ZpGZjt8QsKVKP-zzl3-wKpOsTsvA8pTBvrXdaFJmeBhrQBpCixs5O3bo6nZ-o8U74khj1kf8ZjxyHbugfngNuhmsd6Nhs3xVja23IAlmliOwQYIR9TmS2fXIkV3"
+}
+2024-08-04 09:40:21,013 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-08-04 09:40:21,092 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2024-08-04 09:40:21,170 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
