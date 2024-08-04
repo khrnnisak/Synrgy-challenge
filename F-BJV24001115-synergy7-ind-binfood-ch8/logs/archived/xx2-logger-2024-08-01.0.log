@@ -1,0 +1,780 @@
+2024-08-01 10:30:32,828 INFO o.s.b.StartupInfoLogger [main] Starting FBjv24001115Synergy7IndBinfoodCh6Application using Java 21.0.2 with PID 23312 (E:\Kumpulankoding\java\Synrgy-challenge\F-BJV24001115-synergy7-ind-binfood-ch6\target\classes started by USER in E:\Kumpulankoding\java\Synrgy-challenge\F-BJV24001115-synergy7-ind-binfood-ch6)
+2024-08-01 10:30:32,839 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2024-08-01 10:30:35,664 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-01 10:30:35,937 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 247 ms. Found 7 JPA repository interfaces.
+2024-08-01 10:30:37,730 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port 8081 (http)
+2024-08-01 10:30:37,794 INFO o.a.j.l.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8081"]
+2024-08-01 10:30:37,804 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2024-08-01 10:30:37,809 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-08-01 10:30:38,028 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2024-08-01 10:30:38,033 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 5056 ms
+2024-08-01 10:30:38,428 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-08-01 10:30:38,615 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-08-01 10:30:38,729 INFO o.h.c.i.RegionFactoryInitiator [main] HHH000026: Second-level cache disabled
+2024-08-01 10:30:39,618 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-01 10:30:39,730 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2024-08-01 10:30:40,268 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@e49437
+2024-08-01 10:30:40,279 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2024-08-01 10:30:40,438 WARN o.h.e.j.d.i.DialectFactoryImpl [main] HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-08-01 10:30:43,479 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-08-01 10:30:43,586 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] SQL Warning Code: 0, SQLState: 00000
+2024-08-01 10:30:43,586 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] table "otp" does not exist, skipping
+2024-08-01 10:30:43,746 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-01 10:30:44,407 INFO o.s.d.j.r.q.QueryEnhancerFactory [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-08-01 10:30:44,514 ERROR o.s.b.w.e.t.TomcatStarter [main] Error starting Tomcat context. Exception: org.springframework.beans.factory.UnsatisfiedDependencyException. Message: Error creating bean with name 'securityConfig': Unsatisfied dependency expressed through field 'userDetailService': Error creating bean with name 'userDetailsServiceImpl' defined in file [E:\Kumpulankoding\java\Synrgy-challenge\F-BJV24001115-synergy7-ind-binfood-ch6\target\classes\com\example\FBJV24001115synergy7indbinfoodch6\security\UserDetailsServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'userRepository' defined in com.example.FBJV24001115synergy7indbinfoodch6.repositories.UserRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Could not create query for public abstract java.util.Optional com.example.FBJV24001115synergy7indbinfoodch6.repositories.UserRepository.findByEmail(java.lang.String); Reason: Failed to create query for method public abstract java.util.Optional com.example.FBJV24001115synergy7indbinfoodch6.repositories.UserRepository.findByEmail(java.lang.String); No property 'email' found for type 'User'
+2024-08-01 10:30:44,616 WARN o.s.c.s.AbstractApplicationContext [main] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Unable to start web server
+2024-08-01 10:30:44,618 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-08-01 10:30:44,675 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Shutdown initiated...
+2024-08-01 10:30:44,770 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Shutdown completed.
+2024-08-01 10:36:14,108 INFO o.s.b.StartupInfoLogger [main] Starting FBjv24001115Synergy7IndBinfoodCh6Application using Java 21.0.2 with PID 18444 (E:\Kumpulankoding\java\Synrgy-challenge\F-BJV24001115-synergy7-ind-binfood-ch6\target\classes started by USER in E:\Kumpulankoding\java\Synrgy-challenge\F-BJV24001115-synergy7-ind-binfood-ch6)
+2024-08-01 10:36:14,114 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2024-08-01 10:36:16,129 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-01 10:36:16,428 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 279 ms. Found 7 JPA repository interfaces.
+2024-08-01 10:36:18,464 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port 8081 (http)
+2024-08-01 10:36:18,504 INFO o.a.j.l.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8081"]
+2024-08-01 10:36:18,504 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2024-08-01 10:36:18,520 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-08-01 10:36:18,756 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2024-08-01 10:36:18,756 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 4515 ms
+2024-08-01 10:36:19,204 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-08-01 10:36:19,385 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-08-01 10:36:19,523 INFO o.h.c.i.RegionFactoryInitiator [main] HHH000026: Second-level cache disabled
+2024-08-01 10:36:20,568 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-01 10:36:20,611 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2024-08-01 10:36:21,006 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@1a4930cf
+2024-08-01 10:36:21,013 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2024-08-01 10:36:21,117 WARN o.h.e.j.d.i.DialectFactoryImpl [main] HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-08-01 10:36:24,003 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-08-01 10:36:24,040 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] SQL Warning Code: 0, SQLState: 00000
+2024-08-01 10:36:24,043 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] relation "order_detail" does not exist, skipping
+2024-08-01 10:36:24,046 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] SQL Warning Code: 0, SQLState: 00000
+2024-08-01 10:36:24,049 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] relation "order_detail" does not exist, skipping
+2024-08-01 10:36:24,052 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] SQL Warning Code: 0, SQLState: 00000
+2024-08-01 10:36:24,053 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] relation "orders" does not exist, skipping
+2024-08-01 10:36:24,060 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] SQL Warning Code: 0, SQLState: 00000
+2024-08-01 10:36:24,060 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] relation "product" does not exist, skipping
+2024-08-01 10:36:24,070 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] SQL Warning Code: 0, SQLState: 00000
+2024-08-01 10:36:24,070 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] relation "user_roles" does not exist, skipping
+2024-08-01 10:36:24,070 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] SQL Warning Code: 0, SQLState: 00000
+2024-08-01 10:36:24,078 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] relation "user_roles" does not exist, skipping
+2024-08-01 10:36:24,082 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] SQL Warning Code: 0, SQLState: 00000
+2024-08-01 10:36:24,083 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] table "merchant" does not exist, skipping
+2024-08-01 10:36:24,089 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] SQL Warning Code: 0, SQLState: 00000
+2024-08-01 10:36:24,089 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] table "order_detail" does not exist, skipping
+2024-08-01 10:36:24,094 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] SQL Warning Code: 0, SQLState: 00000
+2024-08-01 10:36:24,094 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] table "orders" does not exist, skipping
+2024-08-01 10:36:24,094 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] SQL Warning Code: 0, SQLState: 00000
+2024-08-01 10:36:24,094 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] table "otp" does not exist, skipping
+2024-08-01 10:36:24,102 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] SQL Warning Code: 0, SQLState: 00000
+2024-08-01 10:36:24,104 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] table "product" does not exist, skipping
+2024-08-01 10:36:24,104 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] SQL Warning Code: 0, SQLState: 00000
+2024-08-01 10:36:24,104 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] table "roles" does not exist, skipping
+2024-08-01 10:36:24,110 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] SQL Warning Code: 0, SQLState: 00000
+2024-08-01 10:36:24,110 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] table "user_roles" does not exist, skipping
+2024-08-01 10:36:24,110 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] SQL Warning Code: 0, SQLState: 00000
+2024-08-01 10:36:24,115 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] table "users" does not exist, skipping
+2024-08-01 10:36:24,227 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-01 10:36:24,879 INFO o.s.d.j.r.q.QueryEnhancerFactory [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-08-01 10:36:25,038 ERROR o.s.b.w.e.t.TomcatStarter [main] Error starting Tomcat context. Exception: org.springframework.beans.factory.UnsatisfiedDependencyException. Message: Error creating bean with name 'securityConfig': Unsatisfied dependency expressed through field 'userDetailService': Error creating bean with name 'userDetailsServiceImpl' defined in file [E:\Kumpulankoding\java\Synrgy-challenge\F-BJV24001115-synergy7-ind-binfood-ch6\target\classes\com\example\FBJV24001115synergy7indbinfoodch6\security\UserDetailsServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'userRepository' defined in com.example.FBJV24001115synergy7indbinfoodch6.repositories.UserRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Could not create query for public abstract java.util.Optional com.example.FBJV24001115synergy7indbinfoodch6.repositories.UserRepository.findByEmail(java.lang.String); Reason: Failed to create query for method public abstract java.util.Optional com.example.FBJV24001115synergy7indbinfoodch6.repositories.UserRepository.findByEmail(java.lang.String); No property 'email' found for type 'User'
+2024-08-01 10:36:25,104 INFO o.a.j.l.DirectJDKLog [main] Stopping service [Tomcat]
+2024-08-01 10:36:25,108 WARN o.a.j.l.DirectJDKLog [main] The web application [ROOT] appears to have started a thread named [HikariPool-1 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1758)
+ java.base/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1070)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1583)
+2024-08-01 10:36:25,113 WARN o.a.j.l.DirectJDKLog [main] The web application [ROOT] appears to have started a thread named [HikariPool-1 connection adder] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1758)
+ java.base/java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:460)
+ java.base/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1069)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1583)
+2024-08-01 10:36:25,121 WARN o.s.c.s.AbstractApplicationContext [main] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Unable to start web server
+2024-08-01 10:36:25,123 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-08-01 10:36:25,178 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Shutdown initiated...
+2024-08-01 10:36:25,198 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Shutdown completed.
+2024-08-01 10:36:25,224 INFO o.s.b.a.l.ConditionEvaluationReportLogger [main] 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-08-01 10:36:25,266 ERROR o.s.b.SpringApplication [main] Application run failed
+org.springframework.context.ApplicationContextException: Unable to start web server
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:165)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:618)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343)
+	at com.example.FBJV24001115synergy7indbinfoodch6.FBjv24001115Synergy7IndBinfoodCh6Application.main(FBjv24001115Synergy7IndBinfoodCh6Application.java:15)
+Caused by: org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:145)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.<init>(TomcatWebServer.java:105)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getTomcatWebServer(TomcatServletWebServerFactory.java:499)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getWebServer(TomcatServletWebServerFactory.java:218)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.createWebServer(ServletWebServerApplicationContext.java:188)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:162)
+	... 8 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'securityConfig': Unsatisfied dependency expressed through field 'userDetailService': Error creating bean with name 'userDetailsServiceImpl' defined in file [E:\Kumpulankoding\java\Synrgy-challenge\F-BJV24001115-synergy7-ind-binfood-ch6\target\classes\com\example\FBJV24001115synergy7indbinfoodch6\security\UserDetailsServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'userRepository' defined in com.example.FBJV24001115synergy7indbinfoodch6.repositories.UserRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Could not create query for public abstract java.util.Optional com.example.FBJV24001115synergy7indbinfoodch6.repositories.UserRepository.findByEmail(java.lang.String); Reason: Failed to create query for method public abstract java.util.Optional com.example.FBJV24001115synergy7indbinfoodch6.repositories.UserRepository.findByEmail(java.lang.String); No property 'email' found for type 'User'
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:787)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:767)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:145)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:508)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1419)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:409)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1335)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1165)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.getOrderedBeansOfType(ServletContextInitializerBeans.java:210)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:173)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:168)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAdaptableBeans(ServletContextInitializerBeans.java:153)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.<init>(ServletContextInitializerBeans.java:86)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.getServletContextInitializerBeans(ServletWebServerApplicationContext.java:266)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.selfInitialize(ServletWebServerApplicationContext.java:240)
+	at org.springframework.boot.web.embedded.tomcat.TomcatStarter.onStartup(TomcatStarter.java:52)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4880)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:171)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1332)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1322)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:866)
+	at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:845)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:171)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1332)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1322)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:866)
+	at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:240)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:171)
+	at org.apache.catalina.core.StandardService.startInternal(StandardService.java:433)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:171)
+	at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:921)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:171)
+	at org.apache.catalina.startup.Tomcat.start(Tomcat.java:437)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:126)
+	... 13 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'userDetailsServiceImpl' defined in file [E:\Kumpulankoding\java\Synrgy-challenge\F-BJV24001115-synergy7-ind-binfood-ch6\target\classes\com\example\FBJV24001115synergy7indbinfoodch6\security\UserDetailsServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'userRepository' defined in com.example.FBJV24001115synergy7indbinfoodch6.repositories.UserRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Could not create query for public abstract java.util.Optional com.example.FBJV24001115synergy7indbinfoodch6.repositories.UserRepository.findByEmail(java.lang.String); Reason: Failed to create query for method public abstract java.util.Optional com.example.FBJV24001115synergy7indbinfoodch6.repositories.UserRepository.findByEmail(java.lang.String); No property 'email' found for type 'User'
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:795)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:237)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1355)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1192)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:784)
+	... 64 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userRepository' defined in com.example.FBJV24001115synergy7indbinfoodch6.repositories.UserRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Could not create query for public abstract java.util.Optional com.example.FBJV24001115synergy7indbinfoodch6.repositories.UserRepository.findByEmail(java.lang.String); Reason: Failed to create query for method public abstract java.util.Optional com.example.FBJV24001115synergy7indbinfoodch6.repositories.UserRepository.findByEmail(java.lang.String); No property 'email' found for type 'User'
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1786)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:904)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:782)
+	... 77 common frames omitted
+Caused by: org.springframework.data.repository.query.QueryCreationException: Could not create query for public abstract java.util.Optional com.example.FBJV24001115synergy7indbinfoodch6.repositories.UserRepository.findByEmail(java.lang.String); Reason: Failed to create query for method public abstract java.util.Optional com.example.FBJV24001115synergy7indbinfoodch6.repositories.UserRepository.findByEmail(java.lang.String); No property 'email' found for type 'User'
+	at org.springframework.data.repository.query.QueryCreationException.create(QueryCreationException.java:101)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.lookupQuery(QueryExecutorMethodInterceptor.java:115)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.mapMethodsToQuery(QueryExecutorMethodInterceptor.java:99)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.lambda$new$0(QueryExecutorMethodInterceptor.java:88)
+	at java.base/java.util.Optional.map(Optional.java:260)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.<init>(QueryExecutorMethodInterceptor.java:88)
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport.getRepository(RepositoryFactorySupport.java:357)
+	at org.springframework.data.repository.core.support.RepositoryFactoryBeanSupport.lambda$afterPropertiesSet$5(RepositoryFactoryBeanSupport.java:279)
+	at org.springframework.data.util.Lazy.getNullable(Lazy.java:135)
+	at org.springframework.data.util.Lazy.get(Lazy.java:113)
+	at org.springframework.data.repository.core.support.RepositoryFactoryBeanSupport.afterPropertiesSet(RepositoryFactoryBeanSupport.java:285)
+	at org.springframework.data.jpa.repository.support.JpaRepositoryFactoryBean.afterPropertiesSet(JpaRepositoryFactoryBean.java:132)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1833)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1782)
+	... 88 common frames omitted
+Caused by: java.lang.IllegalArgumentException: Failed to create query for method public abstract java.util.Optional com.example.FBJV24001115synergy7indbinfoodch6.repositories.UserRepository.findByEmail(java.lang.String); No property 'email' found for type 'User'
+	at org.springframework.data.jpa.repository.query.PartTreeJpaQuery.<init>(PartTreeJpaQuery.java:106)
+	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$CreateQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:124)
+	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$CreateIfNotFoundQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:258)
+	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$AbstractQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:95)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.lookupQuery(QueryExecutorMethodInterceptor.java:111)
+	... 100 common frames omitted
+Caused by: org.springframework.data.mapping.PropertyReferenceException: No property 'email' found for type 'User'
+	at org.springframework.data.mapping.PropertyPath.<init>(PropertyPath.java:90)
+	at org.springframework.data.mapping.PropertyPath.create(PropertyPath.java:443)
+	at org.springframework.data.mapping.PropertyPath.create(PropertyPath.java:419)
+	at org.springframework.data.mapping.PropertyPath.lambda$from$0(PropertyPath.java:372)
+	at java.base/java.util.concurrent.ConcurrentMap.computeIfAbsent(ConcurrentMap.java:330)
+	at org.springframework.data.mapping.PropertyPath.from(PropertyPath.java:354)
+	at org.springframework.data.mapping.PropertyPath.from(PropertyPath.java:332)
+	at org.springframework.data.repository.query.parser.Part.<init>(Part.java:81)
+	at org.springframework.data.repository.query.parser.PartTree$OrPart.lambda$new$0(PartTree.java:259)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:179)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:682)
+	at org.springframework.data.repository.query.parser.PartTree$OrPart.<init>(PartTree.java:260)
+	at org.springframework.data.repository.query.parser.PartTree$Predicate.lambda$new$0(PartTree.java:389)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:179)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:682)
+	at org.springframework.data.repository.query.parser.PartTree$Predicate.<init>(PartTree.java:390)
+	at org.springframework.data.repository.query.parser.PartTree.<init>(PartTree.java:103)
+	at org.springframework.data.jpa.repository.query.PartTreeJpaQuery.<init>(PartTreeJpaQuery.java:100)
+	... 104 common frames omitted
+2024-08-01 10:38:56,047 INFO o.s.b.StartupInfoLogger [main] Starting FBjv24001115Synergy7IndBinfoodCh6Application using Java 21.0.2 with PID 12252 (E:\Kumpulankoding\java\Synrgy-challenge\F-BJV24001115-synergy7-ind-binfood-ch6\target\classes started by USER in E:\Kumpulankoding\java\Synrgy-challenge\F-BJV24001115-synergy7-ind-binfood-ch6)
+2024-08-01 10:38:56,058 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2024-08-01 10:38:58,298 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-01 10:38:58,554 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 241 ms. Found 7 JPA repository interfaces.
+2024-08-01 10:39:00,389 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port 8081 (http)
+2024-08-01 10:39:00,419 INFO o.a.j.l.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8081"]
+2024-08-01 10:39:00,432 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2024-08-01 10:39:00,433 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-08-01 10:39:00,613 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2024-08-01 10:39:00,620 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 4443 ms
+2024-08-01 10:39:01,050 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-08-01 10:39:01,205 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-08-01 10:39:01,309 INFO o.h.c.i.RegionFactoryInitiator [main] HHH000026: Second-level cache disabled
+2024-08-01 10:39:01,861 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-01 10:39:01,941 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2024-08-01 10:39:02,469 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@5a1a20ae
+2024-08-01 10:39:02,483 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2024-08-01 10:39:02,591 WARN o.h.e.j.d.i.DialectFactoryImpl [main] HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-08-01 10:39:05,488 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-08-01 10:39:05,541 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] SQL Warning Code: 0, SQLState: 00000
+2024-08-01 10:39:05,541 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] relation "order_detail" does not exist, skipping
+2024-08-01 10:39:05,541 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] SQL Warning Code: 0, SQLState: 00000
+2024-08-01 10:39:05,541 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] relation "order_detail" does not exist, skipping
+2024-08-01 10:39:05,551 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] SQL Warning Code: 0, SQLState: 00000
+2024-08-01 10:39:05,551 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] relation "orders" does not exist, skipping
+2024-08-01 10:39:05,551 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] SQL Warning Code: 0, SQLState: 00000
+2024-08-01 10:39:05,556 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] relation "product" does not exist, skipping
+2024-08-01 10:39:05,556 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] SQL Warning Code: 0, SQLState: 00000
+2024-08-01 10:39:05,560 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] relation "user_roles" does not exist, skipping
+2024-08-01 10:39:05,567 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] SQL Warning Code: 0, SQLState: 00000
+2024-08-01 10:39:05,569 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] relation "user_roles" does not exist, skipping
+2024-08-01 10:39:05,571 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] SQL Warning Code: 0, SQLState: 00000
+2024-08-01 10:39:05,574 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] table "merchant" does not exist, skipping
+2024-08-01 10:39:05,576 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] SQL Warning Code: 0, SQLState: 00000
+2024-08-01 10:39:05,578 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] table "order_detail" does not exist, skipping
+2024-08-01 10:39:05,583 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] SQL Warning Code: 0, SQLState: 00000
+2024-08-01 10:39:05,583 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] table "orders" does not exist, skipping
+2024-08-01 10:39:05,588 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] SQL Warning Code: 0, SQLState: 00000
+2024-08-01 10:39:05,590 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] table "otp" does not exist, skipping
+2024-08-01 10:39:05,592 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] SQL Warning Code: 0, SQLState: 00000
+2024-08-01 10:39:05,594 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] table "product" does not exist, skipping
+2024-08-01 10:39:05,598 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] SQL Warning Code: 0, SQLState: 00000
+2024-08-01 10:39:05,598 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] table "roles" does not exist, skipping
+2024-08-01 10:39:05,605 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] SQL Warning Code: 0, SQLState: 00000
+2024-08-01 10:39:05,605 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] table "user_roles" does not exist, skipping
+2024-08-01 10:39:05,605 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] SQL Warning Code: 0, SQLState: 00000
+2024-08-01 10:39:05,605 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] table "users" does not exist, skipping
+2024-08-01 10:39:05,723 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-01 10:39:06,330 INFO o.s.d.j.r.q.QueryEnhancerFactory [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-08-01 10:39:07,002 WARN o.s.c.s.AbstractApplicationContext [main] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'authController': Unsatisfied dependency expressed through field 'mailService': Error creating bean with name 'mailServiceImpl': Unsatisfied dependency expressed through field 'otpRepository': Error creating bean with name 'OTPRepository' defined in com.example.FBJV24001115synergy7indbinfoodch6.repositories.OTPRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Could not create query for public abstract java.util.Optional com.example.FBJV24001115synergy7indbinfoodch6.repositories.OTPRepository.findByEmailandOtp(java.lang.String,java.lang.String); Reason: Failed to create query for method public abstract java.util.Optional com.example.FBJV24001115synergy7indbinfoodch6.repositories.OTPRepository.findByEmailandOtp(java.lang.String,java.lang.String); No property 'emailandOtp' found for type 'OTP'
+2024-08-01 10:39:07,013 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-08-01 10:39:07,152 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Shutdown initiated...
+2024-08-01 10:39:07,248 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Shutdown completed.
+2024-08-01 10:39:07,253 INFO o.a.j.l.DirectJDKLog [main] Stopping service [Tomcat]
+2024-08-01 10:39:07,354 INFO o.s.b.a.l.ConditionEvaluationReportLogger [main] 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-08-01 10:39:07,498 ERROR o.s.b.SpringApplication [main] Application run failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'authController': Unsatisfied dependency expressed through field 'mailService': Error creating bean with name 'mailServiceImpl': Unsatisfied dependency expressed through field 'otpRepository': Error creating bean with name 'OTPRepository' defined in com.example.FBJV24001115synergy7indbinfoodch6.repositories.OTPRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Could not create query for public abstract java.util.Optional com.example.FBJV24001115synergy7indbinfoodch6.repositories.OTPRepository.findByEmailandOtp(java.lang.String,java.lang.String); Reason: Failed to create query for method public abstract java.util.Optional com.example.FBJV24001115synergy7indbinfoodch6.repositories.OTPRepository.findByEmailandOtp(java.lang.String,java.lang.String); No property 'emailandOtp' found for type 'OTP'
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:787)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:767)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:145)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:508)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1419)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:962)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343)
+	at com.example.FBJV24001115synergy7indbinfoodch6.FBjv24001115Synergy7IndBinfoodCh6Application.main(FBjv24001115Synergy7IndBinfoodCh6Application.java:15)
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'mailServiceImpl': Unsatisfied dependency expressed through field 'otpRepository': Error creating bean with name 'OTPRepository' defined in com.example.FBJV24001115synergy7indbinfoodch6.repositories.OTPRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Could not create query for public abstract java.util.Optional com.example.FBJV24001115synergy7indbinfoodch6.repositories.OTPRepository.findByEmailandOtp(java.lang.String,java.lang.String); Reason: Failed to create query for method public abstract java.util.Optional com.example.FBJV24001115synergy7indbinfoodch6.repositories.OTPRepository.findByEmailandOtp(java.lang.String,java.lang.String); No property 'emailandOtp' found for type 'OTP'
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:787)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:767)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:145)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:508)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1419)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:784)
+	... 20 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'OTPRepository' defined in com.example.FBJV24001115synergy7indbinfoodch6.repositories.OTPRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Could not create query for public abstract java.util.Optional com.example.FBJV24001115synergy7indbinfoodch6.repositories.OTPRepository.findByEmailandOtp(java.lang.String,java.lang.String); Reason: Failed to create query for method public abstract java.util.Optional com.example.FBJV24001115synergy7indbinfoodch6.repositories.OTPRepository.findByEmailandOtp(java.lang.String,java.lang.String); No property 'emailandOtp' found for type 'OTP'
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1786)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:784)
+	... 34 common frames omitted
+Caused by: org.springframework.data.repository.query.QueryCreationException: Could not create query for public abstract java.util.Optional com.example.FBJV24001115synergy7indbinfoodch6.repositories.OTPRepository.findByEmailandOtp(java.lang.String,java.lang.String); Reason: Failed to create query for method public abstract java.util.Optional com.example.FBJV24001115synergy7indbinfoodch6.repositories.OTPRepository.findByEmailandOtp(java.lang.String,java.lang.String); No property 'emailandOtp' found for type 'OTP'
+	at org.springframework.data.repository.query.QueryCreationException.create(QueryCreationException.java:101)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.lookupQuery(QueryExecutorMethodInterceptor.java:115)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.mapMethodsToQuery(QueryExecutorMethodInterceptor.java:99)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.lambda$new$0(QueryExecutorMethodInterceptor.java:88)
+	at java.base/java.util.Optional.map(Optional.java:260)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.<init>(QueryExecutorMethodInterceptor.java:88)
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport.getRepository(RepositoryFactorySupport.java:357)
+	at org.springframework.data.repository.core.support.RepositoryFactoryBeanSupport.lambda$afterPropertiesSet$5(RepositoryFactoryBeanSupport.java:279)
+	at org.springframework.data.util.Lazy.getNullable(Lazy.java:135)
+	at org.springframework.data.util.Lazy.get(Lazy.java:113)
+	at org.springframework.data.repository.core.support.RepositoryFactoryBeanSupport.afterPropertiesSet(RepositoryFactoryBeanSupport.java:285)
+	at org.springframework.data.jpa.repository.support.JpaRepositoryFactoryBean.afterPropertiesSet(JpaRepositoryFactoryBean.java:132)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1833)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1782)
+	... 44 common frames omitted
+Caused by: java.lang.IllegalArgumentException: Failed to create query for method public abstract java.util.Optional com.example.FBJV24001115synergy7indbinfoodch6.repositories.OTPRepository.findByEmailandOtp(java.lang.String,java.lang.String); No property 'emailandOtp' found for type 'OTP'
+	at org.springframework.data.jpa.repository.query.PartTreeJpaQuery.<init>(PartTreeJpaQuery.java:106)
+	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$CreateQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:124)
+	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$CreateIfNotFoundQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:258)
+	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$AbstractQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:95)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.lookupQuery(QueryExecutorMethodInterceptor.java:111)
+	... 56 common frames omitted
+Caused by: org.springframework.data.mapping.PropertyReferenceException: No property 'emailandOtp' found for type 'OTP'
+	at org.springframework.data.mapping.PropertyPath.<init>(PropertyPath.java:90)
+	at org.springframework.data.mapping.PropertyPath.create(PropertyPath.java:443)
+	at org.springframework.data.mapping.PropertyPath.create(PropertyPath.java:419)
+	at org.springframework.data.mapping.PropertyPath.lambda$from$0(PropertyPath.java:372)
+	at java.base/java.util.concurrent.ConcurrentMap.computeIfAbsent(ConcurrentMap.java:330)
+	at org.springframework.data.mapping.PropertyPath.from(PropertyPath.java:354)
+	at org.springframework.data.mapping.PropertyPath.from(PropertyPath.java:332)
+	at org.springframework.data.repository.query.parser.Part.<init>(Part.java:81)
+	at org.springframework.data.repository.query.parser.PartTree$OrPart.lambda$new$0(PartTree.java:259)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:179)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:682)
+	at org.springframework.data.repository.query.parser.PartTree$OrPart.<init>(PartTree.java:260)
+	at org.springframework.data.repository.query.parser.PartTree$Predicate.lambda$new$0(PartTree.java:389)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:179)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:682)
+	at org.springframework.data.repository.query.parser.PartTree$Predicate.<init>(PartTree.java:390)
+	at org.springframework.data.repository.query.parser.PartTree.<init>(PartTree.java:103)
+	at org.springframework.data.jpa.repository.query.PartTreeJpaQuery.<init>(PartTreeJpaQuery.java:100)
+	... 60 common frames omitted
+2024-08-01 10:40:54,914 INFO o.s.b.StartupInfoLogger [main] Starting FBjv24001115Synergy7IndBinfoodCh6Application using Java 21.0.2 with PID 6340 (E:\Kumpulankoding\java\Synrgy-challenge\F-BJV24001115-synergy7-ind-binfood-ch6\target\classes started by USER in E:\Kumpulankoding\java\Synrgy-challenge\F-BJV24001115-synergy7-ind-binfood-ch6)
+2024-08-01 10:40:54,924 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2024-08-01 10:40:56,823 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-01 10:40:57,094 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 253 ms. Found 7 JPA repository interfaces.
+2024-08-01 10:40:58,872 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port 8081 (http)
+2024-08-01 10:40:58,919 INFO o.a.j.l.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8081"]
+2024-08-01 10:40:58,929 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2024-08-01 10:40:58,938 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-08-01 10:40:59,191 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2024-08-01 10:40:59,198 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 4147 ms
+2024-08-01 10:40:59,740 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-08-01 10:40:59,906 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-08-01 10:41:00,025 INFO o.h.c.i.RegionFactoryInitiator [main] HHH000026: Second-level cache disabled
+2024-08-01 10:41:00,728 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-01 10:41:00,813 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2024-08-01 10:41:01,266 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@2ffa91dc
+2024-08-01 10:41:01,272 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2024-08-01 10:41:01,374 WARN o.h.e.j.d.i.DialectFactoryImpl [main] HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-08-01 10:41:04,333 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-08-01 10:41:04,398 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] SQL Warning Code: 0, SQLState: 00000
+2024-08-01 10:41:04,402 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] relation "order_detail" does not exist, skipping
+2024-08-01 10:41:04,402 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] SQL Warning Code: 0, SQLState: 00000
+2024-08-01 10:41:04,402 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] relation "order_detail" does not exist, skipping
+2024-08-01 10:41:04,407 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] SQL Warning Code: 0, SQLState: 00000
+2024-08-01 10:41:04,411 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] relation "orders" does not exist, skipping
+2024-08-01 10:41:04,411 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] SQL Warning Code: 0, SQLState: 00000
+2024-08-01 10:41:04,418 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] relation "product" does not exist, skipping
+2024-08-01 10:41:04,420 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] SQL Warning Code: 0, SQLState: 00000
+2024-08-01 10:41:04,421 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] relation "user_roles" does not exist, skipping
+2024-08-01 10:41:04,424 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] SQL Warning Code: 0, SQLState: 00000
+2024-08-01 10:41:04,424 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] relation "user_roles" does not exist, skipping
+2024-08-01 10:41:04,429 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] SQL Warning Code: 0, SQLState: 00000
+2024-08-01 10:41:04,429 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] table "merchant" does not exist, skipping
+2024-08-01 10:41:04,434 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] SQL Warning Code: 0, SQLState: 00000
+2024-08-01 10:41:04,434 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] table "order_detail" does not exist, skipping
+2024-08-01 10:41:04,434 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] SQL Warning Code: 0, SQLState: 00000
+2024-08-01 10:41:04,434 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] table "orders" does not exist, skipping
+2024-08-01 10:41:04,440 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] SQL Warning Code: 0, SQLState: 00000
+2024-08-01 10:41:04,441 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] table "otp" does not exist, skipping
+2024-08-01 10:41:04,445 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] SQL Warning Code: 0, SQLState: 00000
+2024-08-01 10:41:04,445 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] table "product" does not exist, skipping
+2024-08-01 10:41:04,450 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] SQL Warning Code: 0, SQLState: 00000
+2024-08-01 10:41:04,450 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] table "roles" does not exist, skipping
+2024-08-01 10:41:04,450 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] SQL Warning Code: 0, SQLState: 00000
+2024-08-01 10:41:04,450 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] table "user_roles" does not exist, skipping
+2024-08-01 10:41:04,455 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] SQL Warning Code: 0, SQLState: 00000
+2024-08-01 10:41:04,455 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] table "users" does not exist, skipping
+2024-08-01 10:41:04,566 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-01 10:41:05,277 INFO o.s.d.j.r.q.QueryEnhancerFactory [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-08-01 10:41:05,798 WARN o.s.c.s.AbstractApplicationContext [main] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'authController': Unsatisfied dependency expressed through field 'mailService': Error creating bean with name 'mailServiceImpl': Unsatisfied dependency expressed through field 'otpRepository': Error creating bean with name 'OTPRepository' defined in com.example.FBJV24001115synergy7indbinfoodch6.repositories.OTPRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Could not create query for public abstract java.util.Optional com.example.FBJV24001115synergy7indbinfoodch6.repositories.OTPRepository.findByEmailAddressandOtp(java.lang.String,java.lang.String); Reason: Failed to create query for method public abstract java.util.Optional com.example.FBJV24001115synergy7indbinfoodch6.repositories.OTPRepository.findByEmailAddressandOtp(java.lang.String,java.lang.String); No property 'emailAddressandOtp' found for type 'OTP'
+2024-08-01 10:41:05,805 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-08-01 10:41:05,880 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Shutdown initiated...
+2024-08-01 10:41:05,946 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Shutdown completed.
+2024-08-01 10:41:05,992 INFO o.a.j.l.DirectJDKLog [main] Stopping service [Tomcat]
+2024-08-01 10:41:06,031 INFO o.s.b.a.l.ConditionEvaluationReportLogger [main] 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-08-01 10:41:06,130 ERROR o.s.b.SpringApplication [main] Application run failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'authController': Unsatisfied dependency expressed through field 'mailService': Error creating bean with name 'mailServiceImpl': Unsatisfied dependency expressed through field 'otpRepository': Error creating bean with name 'OTPRepository' defined in com.example.FBJV24001115synergy7indbinfoodch6.repositories.OTPRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Could not create query for public abstract java.util.Optional com.example.FBJV24001115synergy7indbinfoodch6.repositories.OTPRepository.findByEmailAddressandOtp(java.lang.String,java.lang.String); Reason: Failed to create query for method public abstract java.util.Optional com.example.FBJV24001115synergy7indbinfoodch6.repositories.OTPRepository.findByEmailAddressandOtp(java.lang.String,java.lang.String); No property 'emailAddressandOtp' found for type 'OTP'
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:787)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:767)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:145)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:508)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1419)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:962)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343)
+	at com.example.FBJV24001115synergy7indbinfoodch6.FBjv24001115Synergy7IndBinfoodCh6Application.main(FBjv24001115Synergy7IndBinfoodCh6Application.java:15)
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'mailServiceImpl': Unsatisfied dependency expressed through field 'otpRepository': Error creating bean with name 'OTPRepository' defined in com.example.FBJV24001115synergy7indbinfoodch6.repositories.OTPRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Could not create query for public abstract java.util.Optional com.example.FBJV24001115synergy7indbinfoodch6.repositories.OTPRepository.findByEmailAddressandOtp(java.lang.String,java.lang.String); Reason: Failed to create query for method public abstract java.util.Optional com.example.FBJV24001115synergy7indbinfoodch6.repositories.OTPRepository.findByEmailAddressandOtp(java.lang.String,java.lang.String); No property 'emailAddressandOtp' found for type 'OTP'
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:787)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:767)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:145)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:508)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1419)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:784)
+	... 20 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'OTPRepository' defined in com.example.FBJV24001115synergy7indbinfoodch6.repositories.OTPRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Could not create query for public abstract java.util.Optional com.example.FBJV24001115synergy7indbinfoodch6.repositories.OTPRepository.findByEmailAddressandOtp(java.lang.String,java.lang.String); Reason: Failed to create query for method public abstract java.util.Optional com.example.FBJV24001115synergy7indbinfoodch6.repositories.OTPRepository.findByEmailAddressandOtp(java.lang.String,java.lang.String); No property 'emailAddressandOtp' found for type 'OTP'
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1786)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:784)
+	... 34 common frames omitted
+Caused by: org.springframework.data.repository.query.QueryCreationException: Could not create query for public abstract java.util.Optional com.example.FBJV24001115synergy7indbinfoodch6.repositories.OTPRepository.findByEmailAddressandOtp(java.lang.String,java.lang.String); Reason: Failed to create query for method public abstract java.util.Optional com.example.FBJV24001115synergy7indbinfoodch6.repositories.OTPRepository.findByEmailAddressandOtp(java.lang.String,java.lang.String); No property 'emailAddressandOtp' found for type 'OTP'
+	at org.springframework.data.repository.query.QueryCreationException.create(QueryCreationException.java:101)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.lookupQuery(QueryExecutorMethodInterceptor.java:115)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.mapMethodsToQuery(QueryExecutorMethodInterceptor.java:99)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.lambda$new$0(QueryExecutorMethodInterceptor.java:88)
+	at java.base/java.util.Optional.map(Optional.java:260)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.<init>(QueryExecutorMethodInterceptor.java:88)
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport.getRepository(RepositoryFactorySupport.java:357)
+	at org.springframework.data.repository.core.support.RepositoryFactoryBeanSupport.lambda$afterPropertiesSet$5(RepositoryFactoryBeanSupport.java:279)
+	at org.springframework.data.util.Lazy.getNullable(Lazy.java:135)
+	at org.springframework.data.util.Lazy.get(Lazy.java:113)
+	at org.springframework.data.repository.core.support.RepositoryFactoryBeanSupport.afterPropertiesSet(RepositoryFactoryBeanSupport.java:285)
+	at org.springframework.data.jpa.repository.support.JpaRepositoryFactoryBean.afterPropertiesSet(JpaRepositoryFactoryBean.java:132)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1833)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1782)
+	... 44 common frames omitted
+Caused by: java.lang.IllegalArgumentException: Failed to create query for method public abstract java.util.Optional com.example.FBJV24001115synergy7indbinfoodch6.repositories.OTPRepository.findByEmailAddressandOtp(java.lang.String,java.lang.String); No property 'emailAddressandOtp' found for type 'OTP'
+	at org.springframework.data.jpa.repository.query.PartTreeJpaQuery.<init>(PartTreeJpaQuery.java:106)
+	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$CreateQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:124)
+	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$CreateIfNotFoundQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:258)
+	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$AbstractQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:95)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.lookupQuery(QueryExecutorMethodInterceptor.java:111)
+	... 56 common frames omitted
+Caused by: org.springframework.data.mapping.PropertyReferenceException: No property 'emailAddressandOtp' found for type 'OTP'
+	at org.springframework.data.mapping.PropertyPath.<init>(PropertyPath.java:90)
+	at org.springframework.data.mapping.PropertyPath.create(PropertyPath.java:443)
+	at org.springframework.data.mapping.PropertyPath.create(PropertyPath.java:419)
+	at org.springframework.data.mapping.PropertyPath.lambda$from$0(PropertyPath.java:372)
+	at java.base/java.util.concurrent.ConcurrentMap.computeIfAbsent(ConcurrentMap.java:330)
+	at org.springframework.data.mapping.PropertyPath.from(PropertyPath.java:354)
+	at org.springframework.data.mapping.PropertyPath.from(PropertyPath.java:332)
+	at org.springframework.data.repository.query.parser.Part.<init>(Part.java:81)
+	at org.springframework.data.repository.query.parser.PartTree$OrPart.lambda$new$0(PartTree.java:259)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:179)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:682)
+	at org.springframework.data.repository.query.parser.PartTree$OrPart.<init>(PartTree.java:260)
+	at org.springframework.data.repository.query.parser.PartTree$Predicate.lambda$new$0(PartTree.java:389)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:179)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:682)
+	at org.springframework.data.repository.query.parser.PartTree$Predicate.<init>(PartTree.java:390)
+	at org.springframework.data.repository.query.parser.PartTree.<init>(PartTree.java:103)
+	at org.springframework.data.jpa.repository.query.PartTreeJpaQuery.<init>(PartTreeJpaQuery.java:100)
+	... 60 common frames omitted
+2024-08-01 10:42:35,952 INFO o.s.b.StartupInfoLogger [main] Starting FBjv24001115Synergy7IndBinfoodCh6Application using Java 21.0.2 with PID 22636 (E:\Kumpulankoding\java\Synrgy-challenge\F-BJV24001115-synergy7-ind-binfood-ch6\target\classes started by USER in E:\Kumpulankoding\java\Synrgy-challenge\F-BJV24001115-synergy7-ind-binfood-ch6)
+2024-08-01 10:42:35,963 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2024-08-01 10:42:39,117 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-01 10:42:39,349 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 217 ms. Found 7 JPA repository interfaces.
+2024-08-01 10:42:40,847 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port 8081 (http)
+2024-08-01 10:42:40,886 INFO o.a.j.l.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8081"]
+2024-08-01 10:42:40,904 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2024-08-01 10:42:40,904 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-08-01 10:42:41,098 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2024-08-01 10:42:41,098 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 5003 ms
+2024-08-01 10:42:41,477 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-08-01 10:42:41,621 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-08-01 10:42:41,722 INFO o.h.c.i.RegionFactoryInitiator [main] HHH000026: Second-level cache disabled
+2024-08-01 10:42:42,260 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-01 10:42:42,370 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2024-08-01 10:42:42,890 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@3d132bb6
+2024-08-01 10:42:42,899 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2024-08-01 10:42:43,058 WARN o.h.e.j.d.i.DialectFactoryImpl [main] HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-08-01 10:42:45,551 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-08-01 10:42:45,581 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] SQL Warning Code: 0, SQLState: 00000
+2024-08-01 10:42:45,582 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] relation "order_detail" does not exist, skipping
+2024-08-01 10:42:45,584 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] SQL Warning Code: 0, SQLState: 00000
+2024-08-01 10:42:45,584 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] relation "order_detail" does not exist, skipping
+2024-08-01 10:42:45,588 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] SQL Warning Code: 0, SQLState: 00000
+2024-08-01 10:42:45,589 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] relation "orders" does not exist, skipping
+2024-08-01 10:42:45,596 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] SQL Warning Code: 0, SQLState: 00000
+2024-08-01 10:42:45,597 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] relation "product" does not exist, skipping
+2024-08-01 10:42:45,599 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] SQL Warning Code: 0, SQLState: 00000
+2024-08-01 10:42:45,601 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] relation "user_roles" does not exist, skipping
+2024-08-01 10:42:45,603 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] SQL Warning Code: 0, SQLState: 00000
+2024-08-01 10:42:45,604 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] relation "user_roles" does not exist, skipping
+2024-08-01 10:42:45,607 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] SQL Warning Code: 0, SQLState: 00000
+2024-08-01 10:42:45,609 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] table "merchant" does not exist, skipping
+2024-08-01 10:42:45,613 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] SQL Warning Code: 0, SQLState: 00000
+2024-08-01 10:42:45,614 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] table "order_detail" does not exist, skipping
+2024-08-01 10:42:45,616 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] SQL Warning Code: 0, SQLState: 00000
+2024-08-01 10:42:45,616 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] table "orders" does not exist, skipping
+2024-08-01 10:42:45,616 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] SQL Warning Code: 0, SQLState: 00000
+2024-08-01 10:42:45,616 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] table "otp" does not exist, skipping
+2024-08-01 10:42:45,616 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] SQL Warning Code: 0, SQLState: 00000
+2024-08-01 10:42:45,616 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] table "product" does not exist, skipping
+2024-08-01 10:42:45,625 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] SQL Warning Code: 0, SQLState: 00000
+2024-08-01 10:42:45,626 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] table "roles" does not exist, skipping
+2024-08-01 10:42:45,630 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] SQL Warning Code: 0, SQLState: 00000
+2024-08-01 10:42:45,630 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] table "user_roles" does not exist, skipping
+2024-08-01 10:42:45,630 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] SQL Warning Code: 0, SQLState: 00000
+2024-08-01 10:42:45,630 WARN o.h.e.j.s.SqlExceptionHelper$StandardWarningHandler [main] table "users" does not exist, skipping
+2024-08-01 10:42:45,744 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-01 10:42:46,485 INFO o.s.d.j.r.q.QueryEnhancerFactory [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-08-01 10:42:47,583 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-08-01 10:42:48,901 INFO o.s.s.w.DefaultSecurityFilterChain [main] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@4ab959e8, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@39d4f046, org.springframework.security.web.context.SecurityContextHolderFilter@64404db6, org.springframework.security.web.header.HeaderWriterFilter@530aa75c, org.springframework.web.filter.CorsFilter@5f910283, org.springframework.security.web.authentication.logout.LogoutFilter@709353b9, org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter@52b2713a, org.springframework.security.oauth2.client.web.OAuth2LoginAuthenticationFilter@13ac1657, com.example.FBJV24001115synergy7indbinfoodch6.security.JwtAuthTokenFilter@30dd23e2, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@df0b348, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@1f9a5d3b, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@6e2764c9, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@53f18591, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4dfbe8c2, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6e5106fc, org.springframework.security.web.access.ExceptionTranslationFilter@7b8d1537, org.springframework.security.web.access.intercept.AuthorizationFilter@2be83e7e]
+2024-08-01 10:42:49,477 INFO o.a.j.l.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8081"]
+2024-08-01 10:42:49,610 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port 8081 (http) with context path ''
+2024-08-01 10:42:49,658 INFO o.s.b.StartupInfoLogger [main] Started FBjv24001115Synergy7IndBinfoodCh6Application in 15.525 seconds (process running for 16.895)
+2024-08-01 10:45:32,101 INFO o.s.b.StartupInfoLogger [main] Starting FBjv24001115Synergy7IndBinfoodCh6Application using Java 21.0.2 with PID 17616 (E:\Kumpulankoding\java\Synrgy-challenge\F-BJV24001115-synergy7-ind-binfood-ch6\target\classes started by USER in E:\Kumpulankoding\java\Synrgy-challenge\F-BJV24001115-synergy7-ind-binfood-ch6)
+2024-08-01 10:45:32,118 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2024-08-01 10:45:35,348 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-01 10:45:35,746 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 294 ms. Found 7 JPA repository interfaces.
+2024-08-01 10:45:40,366 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port 8081 (http)
+2024-08-01 10:45:40,420 INFO o.a.j.l.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8081"]
+2024-08-01 10:45:40,487 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2024-08-01 10:45:40,534 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-08-01 10:45:40,888 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2024-08-01 10:45:40,895 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 8621 ms
+2024-08-01 10:45:41,326 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-08-01 10:45:41,463 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-08-01 10:45:41,565 INFO o.h.c.i.RegionFactoryInitiator [main] HHH000026: Second-level cache disabled
+2024-08-01 10:45:42,301 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-01 10:45:42,398 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2024-08-01 10:45:42,984 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@60ae7cf2
+2024-08-01 10:45:43,010 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2024-08-01 10:45:43,195 WARN o.h.e.j.d.i.DialectFactoryImpl [main] HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-08-01 10:45:47,458 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-08-01 10:45:47,662 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-01 10:45:49,116 INFO o.s.d.j.r.q.QueryEnhancerFactory [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-08-01 10:45:50,652 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-08-01 10:45:51,969 INFO o.s.s.w.DefaultSecurityFilterChain [main] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@21e32876, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@a642c54, org.springframework.security.web.context.SecurityContextHolderFilter@7b6558aa, org.springframework.security.web.header.HeaderWriterFilter@704ddfad, org.springframework.web.filter.CorsFilter@11c372e9, org.springframework.security.web.authentication.logout.LogoutFilter@6179551b, org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter@4bf6bc2d, org.springframework.security.oauth2.client.web.OAuth2LoginAuthenticationFilter@66c9aca2, com.example.FBJV24001115synergy7indbinfoodch6.security.JwtAuthTokenFilter@2f70d78c, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@709353b9, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@497cf31a, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@4b59a1c1, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7fec6c2f, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@67e12e28, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@73418044, org.springframework.security.web.access.ExceptionTranslationFilter@24673720, org.springframework.security.web.access.intercept.AuthorizationFilter@5e572ad6]
+2024-08-01 10:45:53,198 INFO o.a.j.l.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8081"]
+2024-08-01 10:45:53,333 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port 8081 (http) with context path ''
+2024-08-01 10:45:53,382 INFO o.s.b.StartupInfoLogger [main] Started FBjv24001115Synergy7IndBinfoodCh6Application in 23.537 seconds (process running for 24.628)
+2024-08-01 10:46:07,635 INFO o.a.j.l.DirectJDKLog [http-nio-8081-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-08-01 10:46:07,636 INFO o.s.w.s.FrameworkServlet [http-nio-8081-exec-1] Initializing Servlet 'dispatcherServlet'
+2024-08-01 10:46:07,639 INFO o.s.w.s.FrameworkServlet [http-nio-8081-exec-1] Completed initialization in 1 ms
+2024-08-01 10:46:22,869 ERROR c.e.F.s.MailServiceImpl [http-nio-8081-exec-4] [31mGagal Menambahkan Data[0m
+2024-08-01 10:48:48,560 ERROR c.e.F.s.MailServiceImpl [http-nio-8081-exec-2] [31mGagal Menambahkan Data[0m
+2024-08-01 10:50:25,919 ERROR c.e.F.s.MailServiceImpl [http-nio-8081-exec-5] [31mGagal Menambahkan Data[0m
+2024-08-01 10:51:17,468 INFO o.s.b.StartupInfoLogger [main] Starting FBjv24001115Synergy7IndBinfoodCh6Application using Java 21.0.2 with PID 2124 (E:\Kumpulankoding\java\Synrgy-challenge\F-BJV24001115-synergy7-ind-binfood-ch6\target\classes started by USER in E:\Kumpulankoding\java\Synrgy-challenge\F-BJV24001115-synergy7-ind-binfood-ch6)
+2024-08-01 10:51:17,479 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2024-08-01 10:51:19,631 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-01 10:51:19,879 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 225 ms. Found 7 JPA repository interfaces.
+2024-08-01 10:51:21,735 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port 8081 (http)
+2024-08-01 10:51:21,771 INFO o.a.j.l.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8081"]
+2024-08-01 10:51:21,777 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2024-08-01 10:51:21,777 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-08-01 10:51:21,964 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2024-08-01 10:51:21,964 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 4373 ms
+2024-08-01 10:51:22,306 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-08-01 10:51:22,460 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-08-01 10:51:22,555 INFO o.h.c.i.RegionFactoryInitiator [main] HHH000026: Second-level cache disabled
+2024-08-01 10:51:23,053 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-01 10:51:23,116 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2024-08-01 10:51:23,473 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@1b8d20e6
+2024-08-01 10:51:23,479 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2024-08-01 10:51:23,586 WARN o.h.e.j.d.i.DialectFactoryImpl [main] HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-08-01 10:51:26,327 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-08-01 10:51:26,519 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-01 10:51:27,309 INFO o.s.d.j.r.q.QueryEnhancerFactory [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-08-01 10:51:28,217 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-08-01 10:51:29,543 INFO o.s.s.w.DefaultSecurityFilterChain [main] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@5d729af6, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2052c49f, org.springframework.security.web.context.SecurityContextHolderFilter@12dd3501, org.springframework.security.web.header.HeaderWriterFilter@29ceefb3, org.springframework.web.filter.CorsFilter@2be83e7e, org.springframework.security.web.authentication.logout.LogoutFilter@67e12e28, org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter@116fe252, org.springframework.security.oauth2.client.web.OAuth2LoginAuthenticationFilter@6df605f, com.example.FBJV24001115synergy7indbinfoodch6.security.JwtAuthTokenFilter@3705a85c, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@4dfbe8c2, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@65c634f2, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@df0b348, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@650e6569, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4a10e65b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@441c2d2a, org.springframework.security.web.access.ExceptionTranslationFilter@7aff1db3, org.springframework.security.web.access.intercept.AuthorizationFilter@53f18591]
+2024-08-01 10:51:30,274 INFO o.a.j.l.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8081"]
+2024-08-01 10:51:30,340 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port 8081 (http) with context path ''
+2024-08-01 10:51:30,366 INFO o.s.b.StartupInfoLogger [main] Started FBjv24001115Synergy7IndBinfoodCh6Application in 14.182 seconds (process running for 15.43)
+2024-08-01 10:52:31,748 INFO o.a.j.l.DirectJDKLog [http-nio-8081-exec-3] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-08-01 10:52:31,748 INFO o.s.w.s.FrameworkServlet [http-nio-8081-exec-3] Initializing Servlet 'dispatcherServlet'
+2024-08-01 10:52:31,762 INFO o.s.w.s.FrameworkServlet [http-nio-8081-exec-3] Completed initialization in 12 ms
+2024-08-01 10:59:25,688 WARN o.s.w.s.h.AbstractHandlerExceptionResolver [http-nio-8081-exec-7] Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot construct instance of `java.util.HashSet` (although at least one Creator exists): no String-argument constructor/factory method to deserialize from String value ('ROLE_USER')]
+2024-08-01 11:03:44,359 ERROR o.a.j.l.DirectJDKLog [http-nio-8081-exec-5] Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+java.lang.RuntimeException: Error: Role is not found.
+	at com.example.FBJV24001115synergy7indbinfoodch6.services.UserServiceImpl.lambda$0(UserServiceImpl.java:112)
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
+	at com.example.FBJV24001115synergy7indbinfoodch6.services.UserServiceImpl.createUserPostLogin(UserServiceImpl.java:112)
+	at com.example.FBJV24001115synergy7indbinfoodch6.security.SecurityConfig.lambda$4(SecurityConfig.java:52)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.successfulAuthentication(AbstractAuthenticationProcessingFilter.java:333)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:241)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:221)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter.doFilterInternal(OAuth2AuthorizationRequestRedirectFilter.java:181)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:195)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:230)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1736)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1583)

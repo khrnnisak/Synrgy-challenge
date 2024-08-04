@@ -9,12 +9,13 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>F-BJV24001115-synergy7-ind-binfood-ch4</artifactId>
+	<artifactId>F-BJV24001115-synergy7-ind-binfood-ch8</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>F-BJV24001115-synergy7-ind-binfood-ch4</name>
+	<name>F-BJV24001115-synergy7-ind-binfood-ch8</name>
 	<description>Binarfud</description>
 	<properties>
 		<java.version>21</java.version>
+		 <netty.version>4.1.109.Final</netty.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -61,6 +62,11 @@
 			<version>0.11.5</version>
 		</dependency>
 		<dependency>
+			<groupId>com.google.firebase</groupId>
+			<artifactId>firebase-admin</artifactId>
+			<version>9.3.0</version>
+		</dependency>
+		<dependency>
 			<groupId>io.jsonwebtoken</groupId>
 			<artifactId>jjwt-impl</artifactId>
 			<version>0.11.5</version>
@@ -69,6 +75,14 @@
 			<groupId>io.jsonwebtoken</groupId>
 			<artifactId>jjwt-jackson</artifactId>
 			<version>0.11.5</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-oauth2-client</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
 		</dependency>
 	</dependencies>
 
